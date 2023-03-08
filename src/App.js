@@ -21,6 +21,7 @@ const App = ({ signOut }) => {
 
   useEffect(() => {
     fetchNotes();
+    console.log(API);
   }, []);
 
   async function fetchNotes() {
