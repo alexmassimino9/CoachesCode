@@ -9,3 +9,26 @@ type Note @model @auth(rules: [ { allow: public } ] ){
   description: String
   image: String
 }
+
+type Player {
+  id: ID!
+  name: String!
+  position: String
+}
+
+type Team {
+  id: ID!
+  location: String!
+  players: [Player!]!
+  coachId: ID!
+}
+
+type Query {
+  team(id: ID!): Team
+}
+
+type Mutation {
+  createTeam(location: String!, coachId: ID!): Team!
+  addPlayer(teamId: ID!, name: String!, position: String): Player!
+  removePlayer(teamId: ID!, playerId: ID!): ID
+}
