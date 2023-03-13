@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import Teams from "./components/Teams";
+import Contact from "./components/Contact";
 import { Amplify } from "aws-amplify";
 import config from "./aws-exports";
 import {
@@ -14,14 +16,12 @@ Amplify.configure(config);
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />}>
-      <Route path="contact" element={<div>Contact</div>} />
-      <Route path="dashboard" element={<div>Dashboard</div>} />
-      <Route element={<div> auth</div>}>
-        <Route path="login" element={<div>login </div>} />
-        <Route path="logout" />
-      </Route>
-    </Route>
+    <>
+      <Route path="/" element={<App />} />
+      <Route exact path="teams" element={<Teams />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="*" element={<h1>404: Not Found</h1>} />
+    </>
   )
 );
 

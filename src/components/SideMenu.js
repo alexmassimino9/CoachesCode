@@ -8,10 +8,13 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
-
+import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
+import HomeIcon from "@mui/icons-material/Home";
+import GroupsIcon from "@mui/icons-material/Groups";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 const SideMenu = () => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -25,14 +28,15 @@ const SideMenu = () => {
     setIsMenuOpen((state) => !state);
   };
 
-  const listItems = [
-    "Inbox",
-    "Starred",
-    "Send email",
-    "Drafts",
-    "All mail",
-    "Trash",
-    "Spam",
+  // function that takes the page name as input and navigates to that page with useNavigate
+  const navigateToPage = (page) => {
+    navigate(page);
+  };
+
+  const pages = [
+    { page: "Home", link: "/", icon: <HomeIcon /> },
+    { page: "Teams", link: "/teams", icon: <GroupsIcon /> },
+    { page: "Contact", link: "/contact", icon: <AlternateEmailIcon /> },
   ];
 
   const list = () => (
@@ -43,13 +47,15 @@ const SideMenu = () => {
       onKeyDown={toggleDrawer("left", false)}
     >
       <List>
-        {listItems.map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+        {pages.map((text, index) => (
+          <ListItem key={text.page} disablePadding>
+            <ListItemButton
+              component={Link}
+              to={text.link}
+              onClick={() => navigateToPage(text.link)}
+            >
+              <ListItemIcon>{text.icon}</ListItemIcon>
+              <ListItemText primary={text.page} />
             </ListItemButton>
           </ListItem>
         ))}
