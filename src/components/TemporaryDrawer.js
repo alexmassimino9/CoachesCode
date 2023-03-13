@@ -60,7 +60,7 @@ const TemporaryDrawer = () => {
   return (
     <div>
       <>
-        <Button onClick={toggleDrawer("left", true)} variant="">
+        <Button onClick={toggleDrawer("left", true)} variant="contained">
           Coaches Code
         </Button>
         <Drawer

@@ -1,16 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "@aws-amplify/ui-react/styles.css";
 import { API, Storage } from "aws-amplify";
-import {
-  // Button,
-  // Flex,
-  // Heading,
-  // Image,
-  // Text,
-  // TextField,
-  // View,
-  withAuthenticator,
-} from "@aws-amplify/ui-react";
+import { withAuthenticator } from "@aws-amplify/ui-react";
 // import { listNotes } from "./graphql/queries";
 // import {
 //   createNote as createNoteMutation,
@@ -24,8 +15,6 @@ const App = ({ signOut }) => {
   return (
     <>
       <main className="main">
-        {/* <Button onClick={signOut}>Sign Out</Button>
-        <TemporaryDrawer /> */}
         <AppBar />
       </main>
     </>

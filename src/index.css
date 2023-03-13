@@ -19,3 +19,13 @@ colors
     height: 100vh;
     display: flex;
 }
+
+.appBar{
+    background-color: #3D3C42;
+    justify-content: space-around;
+    align-items: center;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}

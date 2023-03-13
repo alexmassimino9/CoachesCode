@@ -8,10 +8,10 @@ import Button from "@mui/material/Button";
 export default function ButtonAppBar({ signOut }) {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" className="appBar">
         <Toolbar>
           <TemporaryDrawer />
-          <Button color="inherit" onClick={signOut}>
+          <Button color="inherit" variant="outlined" onClick={signOut}>
             Sign Out
           </Button>
         </Toolbar>
