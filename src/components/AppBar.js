@@ -4,8 +4,9 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import SideMenu from "./SideMenu";
 import Button from "@mui/material/Button";
+import { withAuthenticator } from "@aws-amplify/ui-react";
 
-export default function ButtonAppBar({ signOut }) {
+const ButtonAppBar = ({ signOut }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" className="appBar">
@@ -18,4 +19,6 @@ export default function ButtonAppBar({ signOut }) {
       </AppBar>
     </Box>
   );
-}
+};
+
+export default withAuthenticator(ButtonAppBar);
