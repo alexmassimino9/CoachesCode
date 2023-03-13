@@ -11,7 +11,7 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 
-const TemporaryDrawer = () => {
+const SideMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -75,4 +75,4 @@ const TemporaryDrawer = () => {
   );
 };
 
-export default TemporaryDrawer;
+export default SideMenu;

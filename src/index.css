@@ -18,6 +18,7 @@ colors
     padding: 0;
     height: 100vh;
     display: flex;
+    flex-direction: column;
 }
 
 .appBar{
@@ -28,4 +29,14 @@ colors
     margin: 0;
     padding: 0;
     display: flex;
+}
+
+.defaultContainer {
+    background-color: #7F5283;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    border: 5px solid yellow;
 }

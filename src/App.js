@@ -10,12 +10,14 @@ import { withAuthenticator } from "@aws-amplify/ui-react";
 
 ///
 import AppBar from "./components/AppBar";
+import DefaultPage from "./components/DefaultPage";
 
 const App = ({ signOut }) => {
   return (
     <>
       <main className="main">
-        <AppBar />
+        <AppBar signOut={signOut} />
+        <DefaultPage />
       </main>
     </>
   );
