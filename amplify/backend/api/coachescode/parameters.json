@@ -1,6 +1,5 @@
 {
   "AppSyncApiName": "coachescode",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
-  "DynamoDBEnableServerSideEncryption": false,
-  "AuthModeLastUpdated": "2023-03-13T02:33:29.751Z"
+  "DynamoDBEnableServerSideEncryption": false
 }

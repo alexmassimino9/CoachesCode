@@ -4,15 +4,12 @@
       "dependsOn": [],
       "output": {
         "authConfig": {
-          "additionalAuthenticationProviders": [
-            {
-              "authenticationType": "AWS_IAM"
-            }
-          ],
+          "additionalAuthenticationProviders": [],
           "defaultAuthentication": {
             "apiKeyConfig": {
+              "apiKeyExpirationDate": "2023-04-14T06:03:18.410Z",
               "apiKeyExpirationDays": 30,
-              "description": "api key description"
+              "description": "coaches code api key"
             },
             "authenticationType": "API_KEY"
           }
