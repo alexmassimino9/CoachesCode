@@ -4,6 +4,7 @@ import { listRecipes } from "../../graphql/queries";
 
 const HomePage = () => {
   const [user, setUser] = useState("");
+  const [counter, setCounter] = useState(0);
 
   // get user's name from aws amplify
   useEffect(() => {
@@ -22,10 +23,37 @@ const HomePage = () => {
     setUser(user.username);
   };
 
+  const Container = ({ setCounter }) => {
+    return (
+      <div>
+        <AddOneButton setCounter={setCounter} />
+      </div>
+    );
+  };
+  const AddOneButton = ({ setCounter }) => {
+    return (
+      <div>
+        <button onClick={() => setCounter((state) => state + 1)}>
+          Add One
+        </button>
+      </div>
+    );
+  };
+
+  const Counter = ({ counter }) => {
+    return <h4>Counter: {counter}</h4>;
+  };
+
   return (
     <main className="defaultContainer">
       <h1>Default Page</h1>
       <p>Welcome, {user}</p>
+      <br />
+      <br />
+      <div>
+        <Counter counter={counter} />
+        <Container setCounter={setCounter} />
+      </div>
     </main>
   );
 };

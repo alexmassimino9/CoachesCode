@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { ProfilePage, TeamsPage } from "./pages";
 import App from "./App";
-
 import { Amplify } from "aws-amplify";
 import config from "./aws-exports";
 import {
@@ -11,6 +10,7 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
+import UserContext from "./context/UserContext";
 import "./index.css";
 Amplify.configure(config);
 
