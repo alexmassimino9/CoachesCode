@@ -1,69 +1,174 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateTodo = /* GraphQL */ `
-  subscription OnCreateTodo($filter: ModelSubscriptionTodoFilterInput) {
-    onCreateTodo(filter: $filter) {
+export const onCreateRecipe = /* GraphQL */ `
+  subscription OnCreateRecipe($filter: ModelSubscriptionRecipeFilterInput) {
+    onCreateRecipe(filter: $filter) {
       id
-      name
+      title
       description
+      ingredients {
+        name
+        quantity
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      instructions
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
-export const onUpdateTodo = /* GraphQL */ `
-  subscription OnUpdateTodo($filter: ModelSubscriptionTodoFilterInput) {
-    onUpdateTodo(filter: $filter) {
+export const onUpdateRecipe = /* GraphQL */ `
+  subscription OnUpdateRecipe($filter: ModelSubscriptionRecipeFilterInput) {
+    onUpdateRecipe(filter: $filter) {
       id
-      name
+      title
       description
+      ingredients {
+        name
+        quantity
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      instructions
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
-export const onDeleteTodo = /* GraphQL */ `
-  subscription OnDeleteTodo($filter: ModelSubscriptionTodoFilterInput) {
-    onDeleteTodo(filter: $filter) {
+export const onDeleteRecipe = /* GraphQL */ `
+  subscription OnDeleteRecipe($filter: ModelSubscriptionRecipeFilterInput) {
+    onDeleteRecipe(filter: $filter) {
       id
-      name
+      title
       description
+      ingredients {
+        name
+        quantity
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      instructions
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
-export const onCreateNote = /* GraphQL */ `
-  subscription OnCreateNote($filter: ModelSubscriptionNoteFilterInput) {
-    onCreateNote(filter: $filter) {
-      id
+export const onCreateInstruction = /* GraphQL */ `
+  subscription OnCreateInstruction(
+    $filter: ModelSubscriptionInstructionFilterInput
+  ) {
+    onCreateInstruction(filter: $filter) {
       name
-      description
+      quantity
+      id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
-export const onUpdateNote = /* GraphQL */ `
-  subscription OnUpdateNote($filter: ModelSubscriptionNoteFilterInput) {
-    onUpdateNote(filter: $filter) {
-      id
+export const onUpdateInstruction = /* GraphQL */ `
+  subscription OnUpdateInstruction(
+    $filter: ModelSubscriptionInstructionFilterInput
+  ) {
+    onUpdateInstruction(filter: $filter) {
       name
-      description
+      quantity
+      id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
-export const onDeleteNote = /* GraphQL */ `
-  subscription OnDeleteNote($filter: ModelSubscriptionNoteFilterInput) {
-    onDeleteNote(filter: $filter) {
-      id
+export const onDeleteInstruction = /* GraphQL */ `
+  subscription OnDeleteInstruction(
+    $filter: ModelSubscriptionInstructionFilterInput
+  ) {
+    onDeleteInstruction(filter: $filter) {
       name
-      description
+      quantity
+      id
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onCreateIngredient = /* GraphQL */ `
+  subscription OnCreateIngredient(
+    $filter: ModelSubscriptionIngredientFilterInput
+  ) {
+    onCreateIngredient(filter: $filter) {
+      name
+      quantity
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onUpdateIngredient = /* GraphQL */ `
+  subscription OnUpdateIngredient(
+    $filter: ModelSubscriptionIngredientFilterInput
+  ) {
+    onUpdateIngredient(filter: $filter) {
+      name
+      quantity
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onDeleteIngredient = /* GraphQL */ `
+  subscription OnDeleteIngredient(
+    $filter: ModelSubscriptionIngredientFilterInput
+  ) {
+    onDeleteIngredient(filter: $filter) {
+      name
+      quantity
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;

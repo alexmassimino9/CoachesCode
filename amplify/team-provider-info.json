@@ -14,6 +14,9 @@
     "categories": {
       "auth": {
         "coachescode863e8e79": {}
+      },
+      "api": {
+        "coachescode": {}
       }
     }
   },

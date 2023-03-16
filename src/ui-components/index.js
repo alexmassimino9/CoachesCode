@@ -5,7 +5,9 @@
  **************************************************************************/
 
 export { default as studioTheme } from "./studioTheme";
-export { default as TodoCreateForm } from "./TodoCreateForm";
-export { default as TodoUpdateForm } from "./TodoUpdateForm";
-export { default as NoteCreateForm } from "./NoteCreateForm";
-export { default as NoteUpdateForm } from "./NoteUpdateForm";
+export { default as RecipeCreateForm } from "./RecipeCreateForm";
+export { default as RecipeUpdateForm } from "./RecipeUpdateForm";
+export { default as InstructionCreateForm } from "./InstructionCreateForm";
+export { default as InstructionUpdateForm } from "./InstructionUpdateForm";
+export { default as IngredientCreateForm } from "./IngredientCreateForm";
+export { default as IngredientUpdateForm } from "./IngredientUpdateForm";
