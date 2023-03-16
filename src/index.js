@@ -10,7 +10,6 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
-import UserContext from "./context/UserContext";
 import "./index.css";
 Amplify.configure(config);
 
