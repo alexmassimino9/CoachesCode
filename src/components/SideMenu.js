@@ -8,7 +8,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import HomeIcon from "@mui/icons-material/Home";
 import GroupsIcon from "@mui/icons-material/Groups";
 import { useNavigate } from "react-router-dom";
@@ -37,6 +37,7 @@ const SideMenu = () => {
   const pages = [
     { page: "Home", link: "/", icon: <HomeIcon /> },
     { page: "Teams", link: "/teams", icon: <GroupsIcon /> },
+    { page: "Profile", link: "/profile", icon: <AccountBoxIcon /> },
   ];
 
   const list = () => (

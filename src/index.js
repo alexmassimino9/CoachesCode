@@ -18,7 +18,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<App />} />
-      <Route path="/profile" element={<ProfilePage />} />
+      <Route exact path="/profile" element={<ProfilePage />} />
       <Route exact path="/teams" element={<TeamsPage />} />
       <Route path="*" element={<h1>404: Not Found</h1>} />
     </>

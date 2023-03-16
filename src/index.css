@@ -2,7 +2,16 @@
 
 colors 
 #3D3C42
+#19A7CE
+#F6F1F1
+#2C3333
 */
+:root {
+     --color-primary: #3D3C42; /* var(--color-primary) */
+     --color-secondary: #19A7CE; /* var(--color-secondary) */
+     --color-white: #F6F1F1; /* var(--color-white) */
+     --color-black: #2C3333; /* var(--color-black) */
+  }
 *{
     box-sizing: border-box;
     margin: 0;
@@ -11,8 +20,8 @@ colors
 
 }
 .main {
-    background-color: #3D3C42; 
-  color: #fff;
+    background-color: var(--color-primary); 
+  color: var(--color-white);
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     line-height: 1.5;
@@ -24,7 +33,7 @@ colors
 }
 
 .appBar{
-    background-color: #3D3C42;
+    background-color: var(--color-primary);
     justify-content: space-around;
     align-items: center;
     line-height: 1.5;
@@ -34,7 +43,7 @@ colors
 }
 
 .defaultContainer {
-    background-color: #3D3C42;
+    background-color: var(--color-primary);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,7 +53,7 @@ colors
     border: 5px solid yellow;
 }
 .teams {
-    background-color: #3D3C42;
+    background-color: var(--color-primary);
     display: flex;  
     flex-direction: column;
     justify-content: space-around;
