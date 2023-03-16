@@ -34,12 +34,7 @@ colors
 
 .appBar{
     background-color: var(--color-primary);
-    justify-content: space-around;
-    align-items: center;
-    line-height: 1.5;
     margin: 0;
-    padding: 0;
-    display: flex;
 }
 
 .defaultContainer {
