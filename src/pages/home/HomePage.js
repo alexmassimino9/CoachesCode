@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Auth, API } from "aws-amplify";
-import config from "../aws-exports";
-import { listRecipes } from "../graphql/queries";
+import { listRecipes } from "../../graphql/queries";
 
-const DefaultPage = () => {
+const HomePage = () => {
   const [user, setUser] = useState("");
 
   // get user's name from aws amplify
@@ -31,4 +30,4 @@ const DefaultPage = () => {
   );
 };
 
-export default DefaultPage;
+export default HomePage;

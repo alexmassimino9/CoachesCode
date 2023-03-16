@@ -13,6 +13,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import GroupsIcon from "@mui/icons-material/Groups";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+
 const SideMenu = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,7 +37,6 @@ const SideMenu = () => {
   const pages = [
     { page: "Home", link: "/", icon: <HomeIcon /> },
     { page: "Teams", link: "/teams", icon: <GroupsIcon /> },
-    { page: "Contact", link: "/contact", icon: <AlternateEmailIcon /> },
   ];
 
   const list = () => (

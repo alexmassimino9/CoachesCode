@@ -1,9 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { ProfilePage } from "./pages";
+import { ProfilePage, TeamsPage } from "./pages";
 import App from "./App";
-import Teams from "./components/Teams";
-import Contact from "./components/Contact";
+
 import { Amplify } from "aws-amplify";
 import config from "./aws-exports";
 import {
@@ -20,8 +19,7 @@ const router = createBrowserRouter(
     <>
       <Route path="/" element={<App />} />
       <Route path="/profile" element={<ProfilePage />} />
-      <Route exact path="/teams" element={<Teams />} />
-      <Route path="/contact" element={<Contact />} />
+      <Route exact path="/teams" element={<TeamsPage />} />
       <Route path="*" element={<h1>404: Not Found</h1>} />
     </>
   )

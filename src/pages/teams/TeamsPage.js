@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import AppBar from "./AppBar";
+import { AppBar } from "../../components";
 import Button from "@mui/material/Button";
 import { API } from "aws-amplify";
-import { createRecipe } from "../graphql/mutations";
-import { onCreateRecipe } from "../graphql/subscriptions";
+import { createRecipe } from "../../graphql/mutations";
+import { onCreateRecipe } from "../../graphql/subscriptions";
 
-const Teams = () => {
+const TeamsPage = () => {
   useEffect(() => {
     const subscription = API.graphql({ query: onCreateRecipe }).subscribe({
       next: (recipeData) => {
@@ -39,4 +39,4 @@ const Teams = () => {
   );
 };
 
-export default Teams;
+export default TeamsPage;

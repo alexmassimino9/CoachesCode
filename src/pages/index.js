@@ -1,3 +1,5 @@
-import ProfilePage from "./Profile/ProfilePage";
+import ProfilePage from "./profile/ProfilePage";
+import HomePage from "./home/HomePage";
+import TeamsPage from "./teams/TeamsPage";
 
-export { ProfilePage };
+export { ProfilePage, HomePage, TeamsPage };

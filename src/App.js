@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "@aws-amplify/ui-react/styles.css";
-import { API, Storage } from "aws-amplify";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import AppBar from "./components/AppBar";
-import DefaultPage from "./components/DefaultPage";
+import { HomePage } from "./pages";
 import { Auth } from "aws-amplify";
 
 const App = ({ signOut }) => {
@@ -12,7 +11,7 @@ const App = ({ signOut }) => {
     <>
       <main className="main">
         <AppBar signOut={signOut} />
-        <DefaultPage />
+        <HomePage />
       </main>
     </>
   );
