@@ -2,9 +2,20 @@ import React, { useEffect, useState, useContext } from "react";
 import { AppBar } from "../../components";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
-import { deepOrange, deepPurple } from "@mui/material/colors";
+import { deepOrange } from "@mui/material/colors";
+import UserContext, { UserProvider } from "../../context/UserContext";
 
 const ProfilePage = () => {
+  const user = useContext(UserContext);
+  const [userDetails, setUserDetails] = useState({});
+
+  useEffect(() => {
+    if (user !== undefined || user !== null) {
+      setUserDetails(user?.user);
+    }
+  }, [user]);
+
+  const defaultAvatarImg = userDetails?.username?.charAt(0).toUpperCase();
   const styles = {
     avatar: {
       height: "250px",
@@ -14,14 +25,16 @@ const ProfilePage = () => {
     },
   };
   return (
-    <main className="main">
-      <AppBar />
-      <section className="profileSection">
-        <Stack direction="row" spacing={2}>
-          <Avatar sx={styles.avatar}>N</Avatar>
-        </Stack>
-      </section>
-    </main>
+    <UserProvider>
+      <main className="main">
+        <AppBar />
+        <section className="profileSection">
+          <Stack direction="row" spacing={2}>
+            <Avatar sx={styles.avatar}>{defaultAvatarImg}</Avatar>
+          </Stack>
+        </section>
+      </main>
+    </UserProvider>
   );
 };
 

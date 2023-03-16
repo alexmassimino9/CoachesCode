@@ -9,11 +9,12 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     const getUser = async () => {
       const user = await Auth?.user;
-      setUser(user);
-      console.log("context worked", user);
+      if (user !== undefined || user !== null) {
+        setUser(user);
+      }
     };
     getUser();
-  }, []);
+  }, [user]);
 
   return (
     <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
