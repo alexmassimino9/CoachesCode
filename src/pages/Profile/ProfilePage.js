@@ -33,6 +33,9 @@ const ProfilePage = () => {
             <Avatar sx={styles.avatar}>{defaultAvatarImg}</Avatar>
           </Stack>
         </section>
+        <section>
+          <h1> more coming soon...</h1>
+        </section>
       </main>
     </UserProvider>
   );
