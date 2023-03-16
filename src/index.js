@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { ProfilePage } from "./pages";
 import App from "./App";
 import Teams from "./components/Teams";
 import Contact from "./components/Contact";
@@ -18,7 +19,8 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<App />} />
-      <Route exact path="teams" element={<Teams />} />
+      <Route path="/profile" element={<ProfilePage />} />
+      <Route exact path="/teams" element={<Teams />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="*" element={<h1>404: Not Found</h1>} />
     </>

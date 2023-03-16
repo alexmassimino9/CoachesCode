@@ -26,9 +26,11 @@ export default function IngredientUpdateForm(props) {
   const initialValues = {
     name: "",
     quantity: "",
+    recipeID: "",
   };
   const [name, setName] = React.useState(initialValues.name);
   const [quantity, setQuantity] = React.useState(initialValues.quantity);
+  const [recipeID, setRecipeID] = React.useState(initialValues.recipeID);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = ingredientRecord
@@ -36,6 +38,7 @@ export default function IngredientUpdateForm(props) {
       : initialValues;
     setName(cleanValues.name);
     setQuantity(cleanValues.quantity);
+    setRecipeID(cleanValues.recipeID);
     setErrors({});
   };
   const [ingredientRecord, setIngredientRecord] = React.useState(ingredient);
@@ -51,7 +54,8 @@ export default function IngredientUpdateForm(props) {
   React.useEffect(resetStateValues, [ingredientRecord]);
   const validations = {
     name: [{ type: "Required" }],
-    quantity: [{ type: "Required" }],
+    quantity: [],
+    recipeID: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -81,6 +85,7 @@ export default function IngredientUpdateForm(props) {
         let modelFields = {
           name,
           quantity,
+          recipeID,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -138,6 +143,7 @@ export default function IngredientUpdateForm(props) {
             const modelFields = {
               name: value,
               quantity,
+              recipeID,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -154,7 +160,7 @@ export default function IngredientUpdateForm(props) {
       ></TextField>
       <TextField
         label="Quantity"
-        isRequired={true}
+        isRequired={false}
         isReadOnly={false}
         value={quantity}
         onChange={(e) => {
@@ -163,6 +169,7 @@ export default function IngredientUpdateForm(props) {
             const modelFields = {
               name,
               quantity: value,
+              recipeID,
             };
             const result = onChange(modelFields);
             value = result?.quantity ?? value;
@@ -176,6 +183,32 @@ export default function IngredientUpdateForm(props) {
         errorMessage={errors.quantity?.errorMessage}
         hasError={errors.quantity?.hasError}
         {...getOverrideProps(overrides, "quantity")}
+      ></TextField>
+      <TextField
+        label="Recipe id"
+        isRequired={true}
+        isReadOnly={false}
+        value={recipeID}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              quantity,
+              recipeID: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.recipeID ?? value;
+          }
+          if (errors.recipeID?.hasError) {
+            runValidationTasks("recipeID", value);
+          }
+          setRecipeID(value);
+        }}
+        onBlur={() => runValidationTasks("recipeID", recipeID)}
+        errorMessage={errors.recipeID?.errorMessage}
+        hasError={errors.recipeID?.hasError}
+        {...getOverrideProps(overrides, "recipeID")}
       ></TextField>
       <Flex
         justifyContent="space-between"

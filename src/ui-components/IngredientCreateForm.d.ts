@@ -15,16 +15,19 @@ export declare type ValidationFunction<T> = (value: T, validationResponse: Valid
 export declare type IngredientCreateFormInputValues = {
     name?: string;
     quantity?: string;
+    recipeID?: string;
 };
 export declare type IngredientCreateFormValidationValues = {
     name?: ValidationFunction<string>;
     quantity?: ValidationFunction<string>;
+    recipeID?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type IngredientCreateFormOverridesProps = {
     IngredientCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
     name?: PrimitiveOverrideProps<TextFieldProps>;
     quantity?: PrimitiveOverrideProps<TextFieldProps>;
+    recipeID?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type IngredientCreateFormProps = React.PropsWithChildren<{
     overrides?: IngredientCreateFormOverridesProps | undefined | null;

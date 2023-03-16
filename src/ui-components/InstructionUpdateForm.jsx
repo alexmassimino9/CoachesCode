@@ -24,18 +24,20 @@ export default function InstructionUpdateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    name: "",
-    quantity: "",
+    description: "",
+    recipeID: "",
   };
-  const [name, setName] = React.useState(initialValues.name);
-  const [quantity, setQuantity] = React.useState(initialValues.quantity);
+  const [description, setDescription] = React.useState(
+    initialValues.description
+  );
+  const [recipeID, setRecipeID] = React.useState(initialValues.recipeID);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = instructionRecord
       ? { ...initialValues, ...instructionRecord }
       : initialValues;
-    setName(cleanValues.name);
-    setQuantity(cleanValues.quantity);
+    setDescription(cleanValues.description);
+    setRecipeID(cleanValues.recipeID);
     setErrors({});
   };
   const [instructionRecord, setInstructionRecord] = React.useState(instruction);
@@ -50,8 +52,8 @@ export default function InstructionUpdateForm(props) {
   }, [idProp, instruction]);
   React.useEffect(resetStateValues, [instructionRecord]);
   const validations = {
-    name: [{ type: "Required" }],
-    quantity: [{ type: "Required" }],
+    description: [{ type: "Required" }],
+    recipeID: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -79,8 +81,8 @@ export default function InstructionUpdateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          name,
-          quantity,
+          description,
+          recipeID,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -128,54 +130,54 @@ export default function InstructionUpdateForm(props) {
       {...rest}
     >
       <TextField
-        label="Name"
+        label="Description"
         isRequired={true}
         isReadOnly={false}
-        value={name}
+        value={description}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              name: value,
-              quantity,
+              description: value,
+              recipeID,
             };
             const result = onChange(modelFields);
-            value = result?.name ?? value;
+            value = result?.description ?? value;
           }
-          if (errors.name?.hasError) {
-            runValidationTasks("name", value);
+          if (errors.description?.hasError) {
+            runValidationTasks("description", value);
           }
-          setName(value);
+          setDescription(value);
         }}
-        onBlur={() => runValidationTasks("name", name)}
-        errorMessage={errors.name?.errorMessage}
-        hasError={errors.name?.hasError}
-        {...getOverrideProps(overrides, "name")}
+        onBlur={() => runValidationTasks("description", description)}
+        errorMessage={errors.description?.errorMessage}
+        hasError={errors.description?.hasError}
+        {...getOverrideProps(overrides, "description")}
       ></TextField>
       <TextField
-        label="Quantity"
+        label="Recipe id"
         isRequired={true}
         isReadOnly={false}
-        value={quantity}
+        value={recipeID}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              name,
-              quantity: value,
+              description,
+              recipeID: value,
             };
             const result = onChange(modelFields);
-            value = result?.quantity ?? value;
+            value = result?.recipeID ?? value;
           }
-          if (errors.quantity?.hasError) {
-            runValidationTasks("quantity", value);
+          if (errors.recipeID?.hasError) {
+            runValidationTasks("recipeID", value);
           }
-          setQuantity(value);
+          setRecipeID(value);
         }}
-        onBlur={() => runValidationTasks("quantity", quantity)}
-        errorMessage={errors.quantity?.errorMessage}
-        hasError={errors.quantity?.hasError}
-        {...getOverrideProps(overrides, "quantity")}
+        onBlur={() => runValidationTasks("recipeID", recipeID)}
+        errorMessage={errors.recipeID?.errorMessage}
+        hasError={errors.recipeID?.hasError}
+        {...getOverrideProps(overrides, "recipeID")}
       ></TextField>
       <Flex
         justifyContent="space-between"

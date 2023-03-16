@@ -8,16 +8,36 @@ export const getRecipe = /* GraphQL */ `
       title
       description
       ingredients {
-        name
-        quantity
-        id
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
+        items {
+          id
+          name
+          quantity
+          recipeID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          recipeIngredientsId
+        }
+        nextToken
+        startedAt
       }
-      instructions
+      instructions {
+        items {
+          id
+          description
+          recipeID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          recipeInstructionsId
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -38,16 +58,13 @@ export const listRecipes = /* GraphQL */ `
         title
         description
         ingredients {
-          name
-          quantity
-          id
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
+          nextToken
+          startedAt
         }
-        instructions
+        instructions {
+          nextToken
+          startedAt
+        }
         createdAt
         updatedAt
         _version
@@ -77,80 +94,13 @@ export const syncRecipes = /* GraphQL */ `
         title
         description
         ingredients {
-          name
-          quantity
-          id
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
+          nextToken
+          startedAt
         }
-        instructions
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const getInstruction = /* GraphQL */ `
-  query GetInstruction($id: ID!) {
-    getInstruction(id: $id) {
-      name
-      quantity
-      id
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const listInstructions = /* GraphQL */ `
-  query ListInstructions(
-    $filter: ModelInstructionFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listInstructions(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        name
-        quantity
-        id
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const syncInstructions = /* GraphQL */ `
-  query SyncInstructions(
-    $filter: ModelInstructionFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncInstructions(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        name
-        quantity
-        id
+        instructions {
+          nextToken
+          startedAt
+        }
         createdAt
         updatedAt
         _version
@@ -165,14 +115,34 @@ export const syncInstructions = /* GraphQL */ `
 export const getIngredient = /* GraphQL */ `
   query GetIngredient($id: ID!) {
     getIngredient(id: $id) {
+      id
       name
       quantity
-      id
+      recipeID
+      recipe {
+        id
+        title
+        description
+        ingredients {
+          nextToken
+          startedAt
+        }
+        instructions {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      recipeIngredientsId
     }
   }
 `;
@@ -184,14 +154,26 @@ export const listIngredients = /* GraphQL */ `
   ) {
     listIngredients(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
+        id
         name
         quantity
-        id
+        recipeID
+        recipe {
+          id
+          title
+          description
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
+        recipeIngredientsId
       }
       nextToken
       startedAt
@@ -212,9 +194,193 @@ export const syncIngredients = /* GraphQL */ `
       lastSync: $lastSync
     ) {
       items {
+        id
         name
         quantity
+        recipeID
+        recipe {
+          id
+          title
+          description
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        recipeIngredientsId
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getInstruction = /* GraphQL */ `
+  query GetInstruction($id: ID!) {
+    getInstruction(id: $id) {
+      id
+      description
+      recipeID
+      recipe {
         id
+        title
+        description
+        ingredients {
+          nextToken
+          startedAt
+        }
+        instructions {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      recipeInstructionsId
+    }
+  }
+`;
+export const listInstructions = /* GraphQL */ `
+  query ListInstructions(
+    $filter: ModelInstructionFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listInstructions(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        description
+        recipeID
+        recipe {
+          id
+          title
+          description
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        recipeInstructionsId
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncInstructions = /* GraphQL */ `
+  query SyncInstructions(
+    $filter: ModelInstructionFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncInstructions(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        description
+        recipeID
+        recipe {
+          id
+          title
+          description
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        recipeInstructionsId
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getUser = /* GraphQL */ `
+  query GetUser($id: ID!) {
+    getUser(id: $id) {
+      id
+      username
+      email
+      firstName
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listUsers = /* GraphQL */ `
+  query ListUsers(
+    $filter: ModelUserFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        username
+        email
+        firstName
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncUsers = /* GraphQL */ `
+  query SyncUsers(
+    $filter: ModelUserFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncUsers(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        username
+        email
+        firstName
         createdAt
         updatedAt
         _version

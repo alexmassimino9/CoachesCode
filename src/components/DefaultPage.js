@@ -14,7 +14,7 @@ const DefaultPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await API.graphql({ query: listRecipes });
-      console.log("data", data.data);
+      // console.log("data", data.data);
     };
     fetchData();
   }, []);

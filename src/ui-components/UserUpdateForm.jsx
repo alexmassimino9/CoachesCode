@@ -8,12 +8,13 @@
 import * as React from "react";
 import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import { Instruction } from "../models";
+import { User } from "../models";
 import { fetchByPath, validateField } from "./utils";
 import { DataStore } from "aws-amplify";
-export default function InstructionCreateForm(props) {
+export default function UserUpdateForm(props) {
   const {
-    clearOnSuccess = true,
+    id: idProp,
+    user,
     onSuccess,
     onError,
     onSubmit,
@@ -23,22 +24,36 @@ export default function InstructionCreateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    description: "",
-    recipeID: "",
+    username: "",
+    email: "",
+    firstName: "",
   };
-  const [description, setDescription] = React.useState(
-    initialValues.description
-  );
-  const [recipeID, setRecipeID] = React.useState(initialValues.recipeID);
+  const [username, setUsername] = React.useState(initialValues.username);
+  const [email, setEmail] = React.useState(initialValues.email);
+  const [firstName, setFirstName] = React.useState(initialValues.firstName);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    setDescription(initialValues.description);
-    setRecipeID(initialValues.recipeID);
+    const cleanValues = userRecord
+      ? { ...initialValues, ...userRecord }
+      : initialValues;
+    setUsername(cleanValues.username);
+    setEmail(cleanValues.email);
+    setFirstName(cleanValues.firstName);
     setErrors({});
   };
+  const [userRecord, setUserRecord] = React.useState(user);
+  React.useEffect(() => {
+    const queryData = async () => {
+      const record = idProp ? await DataStore.query(User, idProp) : user;
+      setUserRecord(record);
+    };
+    queryData();
+  }, [idProp, user]);
+  React.useEffect(resetStateValues, [userRecord]);
   const validations = {
-    description: [{ type: "Required" }],
-    recipeID: [{ type: "Required" }],
+    username: [{ type: "Required" }],
+    email: [{ type: "Required" }],
+    firstName: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -66,8 +81,9 @@ export default function InstructionCreateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          description,
-          recipeID,
+          username,
+          email,
+          firstName,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -97,12 +113,13 @@ export default function InstructionCreateForm(props) {
               modelFields[key] = undefined;
             }
           });
-          await DataStore.save(new Instruction(modelFields));
+          await DataStore.save(
+            User.copyOf(userRecord, (updated) => {
+              Object.assign(updated, modelFields);
+            })
+          );
           if (onSuccess) {
             onSuccess(modelFields);
-          }
-          if (clearOnSuccess) {
-            resetStateValues();
           }
         } catch (err) {
           if (onError) {
@@ -110,71 +127,100 @@ export default function InstructionCreateForm(props) {
           }
         }
       }}
-      {...getOverrideProps(overrides, "InstructionCreateForm")}
+      {...getOverrideProps(overrides, "UserUpdateForm")}
       {...rest}
     >
       <TextField
-        label="Description"
+        label="Username"
         isRequired={true}
         isReadOnly={false}
-        value={description}
+        value={username}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              description: value,
-              recipeID,
+              username: value,
+              email,
+              firstName,
             };
             const result = onChange(modelFields);
-            value = result?.description ?? value;
+            value = result?.username ?? value;
           }
-          if (errors.description?.hasError) {
-            runValidationTasks("description", value);
+          if (errors.username?.hasError) {
+            runValidationTasks("username", value);
           }
-          setDescription(value);
+          setUsername(value);
         }}
-        onBlur={() => runValidationTasks("description", description)}
-        errorMessage={errors.description?.errorMessage}
-        hasError={errors.description?.hasError}
-        {...getOverrideProps(overrides, "description")}
+        onBlur={() => runValidationTasks("username", username)}
+        errorMessage={errors.username?.errorMessage}
+        hasError={errors.username?.hasError}
+        {...getOverrideProps(overrides, "username")}
       ></TextField>
       <TextField
-        label="Recipe id"
+        label="Email"
         isRequired={true}
         isReadOnly={false}
-        value={recipeID}
+        value={email}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              description,
-              recipeID: value,
+              username,
+              email: value,
+              firstName,
             };
             const result = onChange(modelFields);
-            value = result?.recipeID ?? value;
+            value = result?.email ?? value;
           }
-          if (errors.recipeID?.hasError) {
-            runValidationTasks("recipeID", value);
+          if (errors.email?.hasError) {
+            runValidationTasks("email", value);
           }
-          setRecipeID(value);
+          setEmail(value);
         }}
-        onBlur={() => runValidationTasks("recipeID", recipeID)}
-        errorMessage={errors.recipeID?.errorMessage}
-        hasError={errors.recipeID?.hasError}
-        {...getOverrideProps(overrides, "recipeID")}
+        onBlur={() => runValidationTasks("email", email)}
+        errorMessage={errors.email?.errorMessage}
+        hasError={errors.email?.hasError}
+        {...getOverrideProps(overrides, "email")}
+      ></TextField>
+      <TextField
+        label="First name"
+        isRequired={false}
+        isReadOnly={false}
+        value={firstName}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              username,
+              email,
+              firstName: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.firstName ?? value;
+          }
+          if (errors.firstName?.hasError) {
+            runValidationTasks("firstName", value);
+          }
+          setFirstName(value);
+        }}
+        onBlur={() => runValidationTasks("firstName", firstName)}
+        errorMessage={errors.firstName?.errorMessage}
+        hasError={errors.firstName?.hasError}
+        {...getOverrideProps(overrides, "firstName")}
       ></TextField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}
       >
         <Button
-          children="Clear"
+          children="Reset"
           type="reset"
           onClick={(event) => {
             event.preventDefault();
             resetStateValues();
           }}
-          {...getOverrideProps(overrides, "ClearButton")}
+          isDisabled={!(idProp || user)}
+          {...getOverrideProps(overrides, "ResetButton")}
         ></Button>
         <Flex
           gap="15px"
@@ -184,7 +230,10 @@ export default function InstructionCreateForm(props) {
             children="Submit"
             type="submit"
             variation="primary"
-            isDisabled={Object.values(errors).some((e) => e?.hasError)}
+            isDisabled={
+              !(idProp || user) ||
+              Object.values(errors).some((e) => e?.hasError)
+            }
             {...getOverrideProps(overrides, "SubmitButton")}
           ></Button>
         </Flex>

@@ -7,7 +7,7 @@ type Recipe @model{
   title: String!
   description: String
   ingredients: [Ingredient!] @hasMany
-  instructions: [String!] @hasMany
+  instructions: [Instruction!] @hasMany
 }
 
 type Ingredient @model{
@@ -23,5 +23,9 @@ type Instruction @model{
   recipeID: ID!
   recipe: Recipe @belongsTo
 }
-
-
+type User @model {
+  id: ID!
+  username: String!
+  email: String!
+  firstName: String
+}

@@ -8,16 +8,36 @@ export const onCreateRecipe = /* GraphQL */ `
       title
       description
       ingredients {
-        name
-        quantity
-        id
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
+        items {
+          id
+          name
+          quantity
+          recipeID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          recipeIngredientsId
+        }
+        nextToken
+        startedAt
       }
-      instructions
+      instructions {
+        items {
+          id
+          description
+          recipeID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          recipeInstructionsId
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -33,16 +53,36 @@ export const onUpdateRecipe = /* GraphQL */ `
       title
       description
       ingredients {
-        name
-        quantity
-        id
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
+        items {
+          id
+          name
+          quantity
+          recipeID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          recipeIngredientsId
+        }
+        nextToken
+        startedAt
       }
-      instructions
+      instructions {
+        items {
+          id
+          description
+          recipeID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          recipeInstructionsId
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -58,64 +98,36 @@ export const onDeleteRecipe = /* GraphQL */ `
       title
       description
       ingredients {
-        name
-        quantity
-        id
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
+        items {
+          id
+          name
+          quantity
+          recipeID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          recipeIngredientsId
+        }
+        nextToken
+        startedAt
       }
-      instructions
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onCreateInstruction = /* GraphQL */ `
-  subscription OnCreateInstruction(
-    $filter: ModelSubscriptionInstructionFilterInput
-  ) {
-    onCreateInstruction(filter: $filter) {
-      name
-      quantity
-      id
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onUpdateInstruction = /* GraphQL */ `
-  subscription OnUpdateInstruction(
-    $filter: ModelSubscriptionInstructionFilterInput
-  ) {
-    onUpdateInstruction(filter: $filter) {
-      name
-      quantity
-      id
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onDeleteInstruction = /* GraphQL */ `
-  subscription OnDeleteInstruction(
-    $filter: ModelSubscriptionInstructionFilterInput
-  ) {
-    onDeleteInstruction(filter: $filter) {
-      name
-      quantity
-      id
+      instructions {
+        items {
+          id
+          description
+          recipeID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          recipeInstructionsId
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -129,14 +141,34 @@ export const onCreateIngredient = /* GraphQL */ `
     $filter: ModelSubscriptionIngredientFilterInput
   ) {
     onCreateIngredient(filter: $filter) {
+      id
       name
       quantity
-      id
+      recipeID
+      recipe {
+        id
+        title
+        description
+        ingredients {
+          nextToken
+          startedAt
+        }
+        instructions {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      recipeIngredientsId
     }
   }
 `;
@@ -145,14 +177,34 @@ export const onUpdateIngredient = /* GraphQL */ `
     $filter: ModelSubscriptionIngredientFilterInput
   ) {
     onUpdateIngredient(filter: $filter) {
+      id
       name
       quantity
-      id
+      recipeID
+      recipe {
+        id
+        title
+        description
+        ingredients {
+          nextToken
+          startedAt
+        }
+        instructions {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      recipeIngredientsId
     }
   }
 `;
@@ -161,9 +213,179 @@ export const onDeleteIngredient = /* GraphQL */ `
     $filter: ModelSubscriptionIngredientFilterInput
   ) {
     onDeleteIngredient(filter: $filter) {
+      id
       name
       quantity
+      recipeID
+      recipe {
+        id
+        title
+        description
+        ingredients {
+          nextToken
+          startedAt
+        }
+        instructions {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      recipeIngredientsId
+    }
+  }
+`;
+export const onCreateInstruction = /* GraphQL */ `
+  subscription OnCreateInstruction(
+    $filter: ModelSubscriptionInstructionFilterInput
+  ) {
+    onCreateInstruction(filter: $filter) {
       id
+      description
+      recipeID
+      recipe {
+        id
+        title
+        description
+        ingredients {
+          nextToken
+          startedAt
+        }
+        instructions {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      recipeInstructionsId
+    }
+  }
+`;
+export const onUpdateInstruction = /* GraphQL */ `
+  subscription OnUpdateInstruction(
+    $filter: ModelSubscriptionInstructionFilterInput
+  ) {
+    onUpdateInstruction(filter: $filter) {
+      id
+      description
+      recipeID
+      recipe {
+        id
+        title
+        description
+        ingredients {
+          nextToken
+          startedAt
+        }
+        instructions {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      recipeInstructionsId
+    }
+  }
+`;
+export const onDeleteInstruction = /* GraphQL */ `
+  subscription OnDeleteInstruction(
+    $filter: ModelSubscriptionInstructionFilterInput
+  ) {
+    onDeleteInstruction(filter: $filter) {
+      id
+      description
+      recipeID
+      recipe {
+        id
+        title
+        description
+        ingredients {
+          nextToken
+          startedAt
+        }
+        instructions {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      recipeInstructionsId
+    }
+  }
+`;
+export const onCreateUser = /* GraphQL */ `
+  subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
+    onCreateUser(filter: $filter) {
+      id
+      username
+      email
+      firstName
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onUpdateUser = /* GraphQL */ `
+  subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
+    onUpdateUser(filter: $filter) {
+      id
+      username
+      email
+      firstName
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onDeleteUser = /* GraphQL */ `
+  subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
+    onDeleteUser(filter: $filter) {
+      id
+      username
+      email
+      firstName
       createdAt
       updatedAt
       _version

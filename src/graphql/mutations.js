@@ -11,16 +11,36 @@ export const createRecipe = /* GraphQL */ `
       title
       description
       ingredients {
-        name
-        quantity
-        id
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
+        items {
+          id
+          name
+          quantity
+          recipeID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          recipeIngredientsId
+        }
+        nextToken
+        startedAt
       }
-      instructions
+      instructions {
+        items {
+          id
+          description
+          recipeID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          recipeInstructionsId
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -39,16 +59,36 @@ export const updateRecipe = /* GraphQL */ `
       title
       description
       ingredients {
-        name
-        quantity
-        id
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
+        items {
+          id
+          name
+          quantity
+          recipeID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          recipeIngredientsId
+        }
+        nextToken
+        startedAt
       }
-      instructions
+      instructions {
+        items {
+          id
+          description
+          recipeID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          recipeInstructionsId
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -67,67 +107,36 @@ export const deleteRecipe = /* GraphQL */ `
       title
       description
       ingredients {
-        name
-        quantity
-        id
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
+        items {
+          id
+          name
+          quantity
+          recipeID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          recipeIngredientsId
+        }
+        nextToken
+        startedAt
       }
-      instructions
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const createInstruction = /* GraphQL */ `
-  mutation CreateInstruction(
-    $input: CreateInstructionInput!
-    $condition: ModelInstructionConditionInput
-  ) {
-    createInstruction(input: $input, condition: $condition) {
-      name
-      quantity
-      id
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const updateInstruction = /* GraphQL */ `
-  mutation UpdateInstruction(
-    $input: UpdateInstructionInput!
-    $condition: ModelInstructionConditionInput
-  ) {
-    updateInstruction(input: $input, condition: $condition) {
-      name
-      quantity
-      id
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const deleteInstruction = /* GraphQL */ `
-  mutation DeleteInstruction(
-    $input: DeleteInstructionInput!
-    $condition: ModelInstructionConditionInput
-  ) {
-    deleteInstruction(input: $input, condition: $condition) {
-      name
-      quantity
-      id
+      instructions {
+        items {
+          id
+          description
+          recipeID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          recipeInstructionsId
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -142,14 +151,34 @@ export const createIngredient = /* GraphQL */ `
     $condition: ModelIngredientConditionInput
   ) {
     createIngredient(input: $input, condition: $condition) {
+      id
       name
       quantity
-      id
+      recipeID
+      recipe {
+        id
+        title
+        description
+        ingredients {
+          nextToken
+          startedAt
+        }
+        instructions {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      recipeIngredientsId
     }
   }
 `;
@@ -159,14 +188,34 @@ export const updateIngredient = /* GraphQL */ `
     $condition: ModelIngredientConditionInput
   ) {
     updateIngredient(input: $input, condition: $condition) {
+      id
       name
       quantity
-      id
+      recipeID
+      recipe {
+        id
+        title
+        description
+        ingredients {
+          nextToken
+          startedAt
+        }
+        instructions {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      recipeIngredientsId
     }
   }
 `;
@@ -176,9 +225,191 @@ export const deleteIngredient = /* GraphQL */ `
     $condition: ModelIngredientConditionInput
   ) {
     deleteIngredient(input: $input, condition: $condition) {
+      id
       name
       quantity
+      recipeID
+      recipe {
+        id
+        title
+        description
+        ingredients {
+          nextToken
+          startedAt
+        }
+        instructions {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      recipeIngredientsId
+    }
+  }
+`;
+export const createInstruction = /* GraphQL */ `
+  mutation CreateInstruction(
+    $input: CreateInstructionInput!
+    $condition: ModelInstructionConditionInput
+  ) {
+    createInstruction(input: $input, condition: $condition) {
       id
+      description
+      recipeID
+      recipe {
+        id
+        title
+        description
+        ingredients {
+          nextToken
+          startedAt
+        }
+        instructions {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      recipeInstructionsId
+    }
+  }
+`;
+export const updateInstruction = /* GraphQL */ `
+  mutation UpdateInstruction(
+    $input: UpdateInstructionInput!
+    $condition: ModelInstructionConditionInput
+  ) {
+    updateInstruction(input: $input, condition: $condition) {
+      id
+      description
+      recipeID
+      recipe {
+        id
+        title
+        description
+        ingredients {
+          nextToken
+          startedAt
+        }
+        instructions {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      recipeInstructionsId
+    }
+  }
+`;
+export const deleteInstruction = /* GraphQL */ `
+  mutation DeleteInstruction(
+    $input: DeleteInstructionInput!
+    $condition: ModelInstructionConditionInput
+  ) {
+    deleteInstruction(input: $input, condition: $condition) {
+      id
+      description
+      recipeID
+      recipe {
+        id
+        title
+        description
+        ingredients {
+          nextToken
+          startedAt
+        }
+        instructions {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      recipeInstructionsId
+    }
+  }
+`;
+export const createUser = /* GraphQL */ `
+  mutation CreateUser(
+    $input: CreateUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    createUser(input: $input, condition: $condition) {
+      id
+      username
+      email
+      firstName
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const updateUser = /* GraphQL */ `
+  mutation UpdateUser(
+    $input: UpdateUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    updateUser(input: $input, condition: $condition) {
+      id
+      username
+      email
+      firstName
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const deleteUser = /* GraphQL */ `
+  mutation DeleteUser(
+    $input: DeleteUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    deleteUser(input: $input, condition: $condition) {
+      id
+      username
+      email
+      firstName
       createdAt
       updatedAt
       _version
