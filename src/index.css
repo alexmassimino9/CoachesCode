@@ -38,16 +38,14 @@ colors
         font-size: small;
     }
     .profileContainer {
-      border: 5px solid red;
     flex-direction: column !important;  
 
     }
   
     .profileAside {
-        border: 5px solid blue;
+        border-radius: 16px 16px 0 0 !important;;  
     }
     .profileContentContainer {
-        border: 5px solid green;
     }
   }
 
@@ -130,7 +128,6 @@ colors
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--color-secondary);
     border-radius: 0 16px 16px 0;
   }
   
