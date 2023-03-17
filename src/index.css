@@ -30,13 +30,26 @@ colors
 }
 
 @media only screen and (max-width: 768px) {
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        font-size: small;
+    }
     .profileContainer {
-        border: 5px solid red;
+      border: 5px solid red;
+    flex-direction: column !important;  
+
     }
+  
     .profileAside {
-        
+        border: 5px solid blue;
     }
-}
+    .profileContentContainer {
+        border: 5px solid green;
+    }
+  }
 
 
 
@@ -45,7 +58,7 @@ colors
     color: var(--color-white);
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
-    line-height: 1.5;
+    line-height: 1.5rem;
     display: flex;
     flex-direction: column;
 ;
@@ -76,38 +89,48 @@ colors
 }
 
 .profileContainer {
+    background-color: var(--color-white);
+    color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
     margin-top: 2rem;
     margin-bottom: 2rem;
     display: flex;
-    height: 85vh;
-    width: 90%;
+    height: 90vh;
+    width: 95%;
     align-self: center;
-    background-color: var(--color-white);
-    color: var(--color-white);
     border-radius: 16px;
-    
-
 }
+
+.profileAside {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 16px 0 0 16px;
+    }
 .profileImgContainer {
     border: 5px solid var(--color-secondary);
     box-shadow: 0 0 10px 0 var(--color-gold);
     border-radius: 50%;
     overflow: hidden;
 }
-.profileAside {
+.profileContentContainer {
     display: flex;
+    flex-wrap: wrap;
+    flex: 2;
+    width: 100%;
+    color: var(--color-black);
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 30%;
-    background-color: var(--color-primary);
-    border-radius: 16px 0 0 16px;
-    }
-.test {
-    border: 5px solid red;
-    height: 300px;
-    width: 300px;
-    justify-content: center;
-    align-items: center;
-
-}
+    background-color: var(--color-secondary);
+    border-radius: 0 16px 16px 0;
+  }
+  

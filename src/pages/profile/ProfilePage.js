@@ -35,7 +35,7 @@ const ProfilePage = () => {
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      width: "70%",
+      // width: "100%",
       backgroundColor: "var(--color-secondary)",
       borderRadius: "0 16px 16px 0",
     },
@@ -44,7 +44,7 @@ const ProfilePage = () => {
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      width: "30%",
+      width: "100%",
       backgroundColor: "var(--color-primary)",
       borderRadius: "16px 0 0 16px",
     },
@@ -62,8 +62,7 @@ const ProfilePage = () => {
             <h4> Coach / F/ MF/ DF/ GF </h4>
             <button> edit profile</button>
           </aside>
-          <div style={styles.profileContainer}>
-            {/* <h1>Profile Page</h1> */}
+          <div className="profileContentContainer">
             <ProfileCarousel />
           </div>
         </section>
