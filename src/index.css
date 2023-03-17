@@ -131,3 +131,104 @@ colors
     border-radius: 0 16px 16px 0;
   }
   
+/* Hero section */
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    /* background-color: #f2f2f2; */
+    padding: 2rem;
+    text-align: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://media.npr.org/assets/img/2022/12/18/gettyimages-1450109553_wide-67012065e2d8be481f82550a2a0e5257dcd90168-s1400-c100.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+  
+  
+  /* CTA section */
+  .cta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    /* background-color:var(--color-white); */
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .cta h2 {
+    margin-bottom: 2rem;
+  }
+  
+  .cta button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+  
+  .cta button:hover {
+    background-color: #0062cc;
+  }
+  
+  /* Features section */
+  .features {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .features h2 {
+    margin-bottom: 2rem;
+  }
+  
+  .features ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .features li {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Testimonials section */
+  .testimonials {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    background-color: var(--color-gold);
+    padding: 2rem;
+    text-align: center;
+    color: var(--color-black)
+  }
+  
+  .testimonials h2 {
+    margin-bottom: 2rem;
+  }
+  
+  .testimonials blockquote {
+    max-width: 50rem;
+    margin: 0 auto;
+    font-style: italic;
+    margin-bottom: 2rem;
+  }
+  
+  .testimonials blockquote cite {
+    display: block;
+    text-align: right;
+    margin-top: 1rem;
+  }
+  
