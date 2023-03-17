@@ -17,38 +17,6 @@ const ProfilePage = () => {
   }, [user]);
 
   const defaultAvatarImg = userDetails?.username?.charAt(0).toUpperCase();
-  const styles = {
-    container: {
-      marginTop: "2rem",
-      marginBottom: "2rem",
-      display: "flex",
-      height: "85vh",
-      width: "90%",
-      alignSelf: "center",
-      backgroundColor: "var(--color-white)",
-      color: "var(--color-white)",
-      borderRadius: "16px",
-    },
-    profileContainer: {
-      display: "flex",
-      color: "var(--color-black)",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      // width: "100%",
-      backgroundColor: "var(--color-secondary)",
-      borderRadius: "0 16px 16px 0",
-    },
-    profileAside: {
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      width: "100%",
-      backgroundColor: "var(--color-primary)",
-      borderRadius: "16px 0 0 16px",
-    },
-  };
   return (
     <UserProvider>
       <main className="main">
