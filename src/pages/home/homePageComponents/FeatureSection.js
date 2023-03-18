@@ -23,8 +23,12 @@ const FeatureItem = styled(Box)(({ theme }) => ({
   padding: theme.spacing(3),
   boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.1)",
   transition: "all 0.3s ease-in-out",
-  "&:hover": {
-    transform: "scale(1.05)",
+  margin: theme.spacing(2),
+  minWidth: "200px",
+  minHeight: "325px",
+  [theme.breakpoints.down("sm")]: {
+    padding: theme.spacing(5),
+    margin: `${theme.spacing(2)} ${theme.spacing(3)}`,
   },
 }));
 
@@ -96,7 +100,12 @@ const FeatureSection = () => {
 
   return (
     <FeatureSectionRoot>
-      <Typography variant="h3" align="center" gutterBottom>
+      <Typography
+        variant="h3"
+        align="center"
+        gutterBottom
+        sx={{ color: "#2C3333" }}
+      >
         Features
       </Typography>
       <Carousel responsive={responsive}>
