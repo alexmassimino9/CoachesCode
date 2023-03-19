@@ -1,10 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { AppBar, ProfileIcon } from "../../components";
-import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
-import { deepOrange } from "@mui/material/colors";
 import UserContext, { UserProvider } from "../../context/UserContext";
-import { InputField, ProfileCarousel } from "./profilePageComponents";
+import { ProfileCarousel } from "./profilePageComponents";
 
 const ProfilePage = () => {
   const user = useContext(UserContext);
