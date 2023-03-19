@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "@aws-amplify/ui-react/styles.css";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -10,7 +9,6 @@ import ListItemText from "@mui/material/ListItemText";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import HomeIcon from "@mui/icons-material/Home";
 import GroupsIcon from "@mui/icons-material/Groups";
-
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Logo } from "./";
