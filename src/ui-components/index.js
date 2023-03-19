@@ -5,9 +5,9 @@
  **************************************************************************/
 
 export { default as studioTheme } from "./studioTheme";
-export { default as IngredientCreateForm } from "./IngredientCreateForm";
-export { default as IngredientUpdateForm } from "./IngredientUpdateForm";
-export { default as InstructionCreateForm } from "./InstructionCreateForm";
-export { default as InstructionUpdateForm } from "./InstructionUpdateForm";
 export { default as UserCreateForm } from "./UserCreateForm";
 export { default as UserUpdateForm } from "./UserUpdateForm";
+export { default as TeamCreateForm } from "./TeamCreateForm";
+export { default as TeamUpdateForm } from "./TeamUpdateForm";
+export { default as PlayerCreateForm } from "./PlayerCreateForm";
+export { default as PlayerUpdateForm } from "./PlayerUpdateForm";

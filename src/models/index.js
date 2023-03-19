@@ -4,11 +4,10 @@ import { schema } from './schema';
 
 
 
-const { Recipe, Ingredient, Instruction, User } = initSchema(schema);
+const { User, Team, Player } = initSchema(schema);
 
 export {
-  Recipe,
-  Ingredient,
-  Instruction,
-  User
+  User,
+  Team,
+  Player
 };

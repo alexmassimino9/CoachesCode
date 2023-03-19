@@ -4,6 +4,7 @@ import { withAuthenticator } from "@aws-amplify/ui-react";
 import AppBar from "./components/AppBar";
 import { HomePage } from "./pages";
 import { UserProvider } from "./context/UserContext";
+
 const App = ({ signOut }) => {
   return (
     <>

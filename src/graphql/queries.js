@@ -1,330 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getRecipe = /* GraphQL */ `
-  query GetRecipe($id: ID!) {
-    getRecipe(id: $id) {
-      id
-      title
-      description
-      ingredients {
-        items {
-          id
-          name
-          quantity
-          recipeID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          recipeIngredientsId
-        }
-        nextToken
-        startedAt
-      }
-      instructions {
-        items {
-          id
-          description
-          recipeID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          recipeInstructionsId
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const listRecipes = /* GraphQL */ `
-  query ListRecipes(
-    $filter: ModelRecipeFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listRecipes(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        title
-        description
-        ingredients {
-          nextToken
-          startedAt
-        }
-        instructions {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const syncRecipes = /* GraphQL */ `
-  query SyncRecipes(
-    $filter: ModelRecipeFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncRecipes(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        title
-        description
-        ingredients {
-          nextToken
-          startedAt
-        }
-        instructions {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const getIngredient = /* GraphQL */ `
-  query GetIngredient($id: ID!) {
-    getIngredient(id: $id) {
-      id
-      name
-      quantity
-      recipeID
-      recipe {
-        id
-        title
-        description
-        ingredients {
-          nextToken
-          startedAt
-        }
-        instructions {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      recipeIngredientsId
-    }
-  }
-`;
-export const listIngredients = /* GraphQL */ `
-  query ListIngredients(
-    $filter: ModelIngredientFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listIngredients(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
-        quantity
-        recipeID
-        recipe {
-          id
-          title
-          description
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        recipeIngredientsId
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const syncIngredients = /* GraphQL */ `
-  query SyncIngredients(
-    $filter: ModelIngredientFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncIngredients(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        name
-        quantity
-        recipeID
-        recipe {
-          id
-          title
-          description
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        recipeIngredientsId
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const getInstruction = /* GraphQL */ `
-  query GetInstruction($id: ID!) {
-    getInstruction(id: $id) {
-      id
-      description
-      recipeID
-      recipe {
-        id
-        title
-        description
-        ingredients {
-          nextToken
-          startedAt
-        }
-        instructions {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      recipeInstructionsId
-    }
-  }
-`;
-export const listInstructions = /* GraphQL */ `
-  query ListInstructions(
-    $filter: ModelInstructionFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listInstructions(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        description
-        recipeID
-        recipe {
-          id
-          title
-          description
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        recipeInstructionsId
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const syncInstructions = /* GraphQL */ `
-  query SyncInstructions(
-    $filter: ModelInstructionFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncInstructions(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        description
-        recipeID
-        recipe {
-          id
-          title
-          description
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        recipeInstructionsId
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
 export const getUser = /* GraphQL */ `
   query GetUser($id: ID!) {
     getUser(id: $id) {
@@ -332,6 +8,21 @@ export const getUser = /* GraphQL */ `
       username
       email
       firstName
+      teams {
+        items {
+          id
+          name
+          sport
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          userTeamsId
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -352,6 +43,10 @@ export const listUsers = /* GraphQL */ `
         username
         email
         firstName
+        teams {
+          nextToken
+          startedAt
+        }
         createdAt
         updatedAt
         _version
@@ -381,11 +76,257 @@ export const syncUsers = /* GraphQL */ `
         username
         email
         firstName
+        teams {
+          nextToken
+          startedAt
+        }
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getTeam = /* GraphQL */ `
+  query GetTeam($id: ID!) {
+    getTeam(id: $id) {
+      id
+      name
+      sport
+      coach {
+        id
+        username
+        email
+        firstName
+        teams {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      players {
+        items {
+          id
+          name
+          number
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          teamPlayersId
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      userTeamsId
+    }
+  }
+`;
+export const listTeams = /* GraphQL */ `
+  query ListTeams(
+    $filter: ModelTeamFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listTeams(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        sport
+        coach {
+          id
+          username
+          email
+          firstName
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        players {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userTeamsId
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncTeams = /* GraphQL */ `
+  query SyncTeams(
+    $filter: ModelTeamFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncTeams(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        name
+        sport
+        coach {
+          id
+          username
+          email
+          firstName
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        players {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userTeamsId
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getPlayer = /* GraphQL */ `
+  query GetPlayer($id: ID!) {
+    getPlayer(id: $id) {
+      id
+      name
+      number
+      team {
+        id
+        name
+        sport
+        coach {
+          id
+          username
+          email
+          firstName
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        players {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        userTeamsId
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      teamPlayersId
+    }
+  }
+`;
+export const listPlayers = /* GraphQL */ `
+  query ListPlayers(
+    $filter: ModelPlayerFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listPlayers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        number
+        team {
+          id
+          name
+          sport
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          userTeamsId
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        teamPlayersId
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncPlayers = /* GraphQL */ `
+  query SyncPlayers(
+    $filter: ModelPlayerFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncPlayers(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        name
+        number
+        team {
+          id
+          name
+          sport
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          userTeamsId
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        teamPlayersId
       }
       nextToken
       startedAt
