@@ -8,10 +8,13 @@ import { withAuthenticator } from "@aws-amplify/ui-react";
 const ButtonAppBar = ({ signOut }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" className="appBar">
-        <Toolbar>
+      <AppBar
+        position="static"
+        sx={{ backgroundColor: "var(--color-secondary)" }}
+      >
+        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <SideMenu />
-          <SignOutButton signOut={signOut} />
+          <SignOutButton signOut={signOut} sx={{ marginLeft: "auto" }} />
         </Toolbar>
       </AppBar>
     </Box>
