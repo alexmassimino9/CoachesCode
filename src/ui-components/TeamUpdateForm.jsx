@@ -49,7 +49,7 @@ export default function TeamUpdateForm(props) {
   React.useEffect(resetStateValues, [teamRecord]);
   const validations = {
     name: [{ type: "Required" }],
-    sport: [{ type: "Required" }],
+    sport: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -152,7 +152,7 @@ export default function TeamUpdateForm(props) {
       ></TextField>
       <TextField
         label="Sport"
-        isRequired={true}
+        isRequired={false}
         isReadOnly={false}
         value={sport}
         onChange={(e) => {

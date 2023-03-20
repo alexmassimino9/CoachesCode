@@ -94,7 +94,7 @@ export const schema = {
                     "name": "sport",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "coach": {
@@ -237,5 +237,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.3.6",
-    "version": "4ec45d6de06a147e29849f3596b68669"
+    "version": "ac4fc7803d36e2cb7aaabee72d5f2259"
 };

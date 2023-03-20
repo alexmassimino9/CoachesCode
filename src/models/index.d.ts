@@ -47,7 +47,7 @@ type EagerTeam = {
   };
   readonly id: string;
   readonly name: string;
-  readonly sport: string;
+  readonly sport?: string | null;
   readonly coach?: User | null;
   readonly players?: (Player | null)[] | null;
   readonly createdAt?: string | null;
@@ -62,7 +62,7 @@ type LazyTeam = {
   };
   readonly id: string;
   readonly name: string;
-  readonly sport: string;
+  readonly sport?: string | null;
   readonly coach: AsyncItem<User | undefined>;
   readonly players: AsyncCollection<Player>;
   readonly createdAt?: string | null;

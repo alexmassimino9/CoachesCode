@@ -13,7 +13,7 @@ type User @model {
 type Team @model {
   id: ID!
   name: String!
-  sport: String!
+  sport: String 
   coach: User @belongsTo
   players: [Player] @hasMany
 }

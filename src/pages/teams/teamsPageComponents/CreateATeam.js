@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Paper,
   Typography,
@@ -8,8 +8,45 @@ import {
   Button,
   Box,
 } from "@mui/material";
+import { DataStore } from "@aws-amplify/datastore";
+import { Team } from "../../../models";
 
 const CreateATeam = () => {
+  const [teamName, setTeamName] = useState("");
+  const [isPublic, setIsPublic] = useState(false);
+  const [allowJoinRequests, setAllowJoinRequests] = useState(false);
+
+  const handleTeamNameChange = (event) => {
+    setTeamName(event.target.value);
+  };
+
+  const handlePublicChange = (event) => {
+    setIsPublic(event.target.checked);
+  };
+
+  const handleAllowJoinRequestsChange = (event) => {
+    setAllowJoinRequests(event.target.checked);
+  };
+
+  const handleCreateTeam = async () => {
+    const newTeam = new Team({
+      name: teamName,
+      isPublic: isPublic,
+      allowJoinRequests: allowJoinRequests,
+    });
+
+    try {
+      await DataStore.save(newTeam);
+      console.log("Team created successfully!");
+    } catch (error) {
+      console.error("Error creating team:", error);
+    }
+  };
+
+  const handleCancel = () => {
+    // Reset form fields here if necessary
+  };
+
   return (
     <Paper
       sx={{
@@ -25,6 +62,8 @@ const CreateATeam = () => {
         label="Team Name"
         variant="outlined"
         fullWidth
+        value={teamName}
+        onChange={handleTeamNameChange}
         sx={{
           mb: 3,
           "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
@@ -48,6 +87,8 @@ const CreateATeam = () => {
                 fontSize: "28px",
               },
             }}
+            checked={isPublic}
+            onChange={handlePublicChange}
           />
         }
         label="Public"
@@ -62,6 +103,8 @@ const CreateATeam = () => {
                 fontSize: "28px",
               },
             }}
+            checked={allowJoinRequests}
+            onChange={handleAllowJoinRequestsChange}
           />
         }
         label="Allow Join Requests"
@@ -76,25 +119,26 @@ const CreateATeam = () => {
             color: "var(--color-white)",
             borderRadius: "16px",
             "&:hover": {
-              backgroundColor: "var(--color-secondary)",
+              backgroundColor: "var(--color-primary)",
             },
           }}
+          onClick={handleCancel}
         >
-          Create
+          Cancel
         </Button>
         <Button
-          variant="outlined"
+          variant="contained"
           sx={{
-            borderColor: "var(--color-primary)",
-            color: "var(--color-primary)",
+            backgroundColor: "var(--color-primary)",
+            color: "var(--color-white)",
             borderRadius: "16px",
             "&:hover": {
               backgroundColor: "var(--color-primary)",
-              color: "var(--color-white)",
             },
           }}
+          onClick={handleCreateTeam}
         >
-          Cancel
+          Create Team
         </Button>
       </Box>
     </Paper>

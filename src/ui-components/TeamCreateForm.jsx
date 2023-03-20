@@ -36,7 +36,7 @@ export default function TeamCreateForm(props) {
   };
   const validations = {
     name: [{ type: "Required" }],
-    sport: [{ type: "Required" }],
+    sport: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -138,7 +138,7 @@ export default function TeamCreateForm(props) {
       ></TextField>
       <TextField
         label="Sport"
-        isRequired={true}
+        isRequired={false}
         isReadOnly={false}
         value={sport}
         onChange={(e) => {
