@@ -1,147 +1,124 @@
 import React, { useState } from "react";
 import {
-  Paper,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
   Typography,
   TextField,
-  Checkbox,
-  FormControlLabel,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
   Button,
   Box,
 } from "@mui/material";
-import { DataStore } from "@aws-amplify/datastore";
-import { Team } from "../../../models";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const CreateATeam = () => {
-  const [teamName, setTeamName] = useState("");
-  const [isPublic, setIsPublic] = useState(false);
-  const [allowJoinRequests, setAllowJoinRequests] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
-  const handleTeamNameChange = (event) => {
-    setTeamName(event.target.value);
-  };
-
-  const handlePublicChange = (event) => {
-    setIsPublic(event.target.checked);
-  };
-
-  const handleAllowJoinRequestsChange = (event) => {
-    setAllowJoinRequests(event.target.checked);
-  };
-
-  const handleCreateTeam = async () => {
-    const newTeam = new Team({
-      name: teamName,
-      isPublic: isPublic,
-      allowJoinRequests: allowJoinRequests,
-    });
-
-    try {
-      await DataStore.save(newTeam);
-      console.log("Team created successfully!");
-    } catch (error) {
-      console.error("Error creating team:", error);
-    }
-  };
-
-  const handleCancel = () => {
-    // Reset form fields here if necessary
+  const handleAccordionChange = (event, isExpanded) => {
+    setExpanded(isExpanded);
   };
 
   return (
-    <Paper
-      sx={{
-        p: 3,
-        borderRadius: "16px",
-        boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.08)",
-      }}
-    >
-      <Typography variant="h4" sx={{ mb: 3, color: "var(--color-primary)" }}>
-        Create a Team
-      </Typography>
-      <TextField
-        label="Team Name"
-        variant="outlined"
-        fullWidth
-        value={teamName}
-        onChange={handleTeamNameChange}
+    <Accordion expanded={expanded} onChange={handleAccordionChange}>
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <Typography variant="h4" sx={{ color: "var(--color-primary)" }}>
+          Create a Team
+        </Typography>
+      </AccordionSummary>
+      <AccordionDetails
         sx={{
-          mb: 3,
-          "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-            borderColor: "var(--color-black)",
-            borderRadius: "16px",
-          },
-          "& .MuiOutlinedInput-input": {
-            borderRadius: "16px",
-          },
-          "& .MuiInputLabel-outlined": {
-            color: "var(--color-black)",
-          },
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "stretch",
         }}
-      />
-      <FormControlLabel
-        control={
-          <Checkbox
-            sx={{
-              color: "var(--color-primary)",
-              "& .MuiSvgIcon-root": {
-                fontSize: "28px",
-              },
-            }}
-            checked={isPublic}
-            onChange={handlePublicChange}
-          />
-        }
-        label="Public"
-        sx={{ mb: 2 }}
-      />
-      <FormControlLabel
-        control={
-          <Checkbox
-            sx={{
-              color: "var(--color-primary)",
-              "& .MuiSvgIcon-root": {
-                fontSize: "28px",
-              },
-            }}
-            checked={allowJoinRequests}
-            onChange={handleAllowJoinRequestsChange}
-          />
-        }
-        label="Allow Join Requests"
-        sx={{ mb: 2 }}
-      />
-      <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button
-          variant="contained"
+      >
+        <TextField
+          label="Team Name"
+          variant="outlined"
+          fullWidth
           sx={{
-            mr: 2,
-            backgroundColor: "var(--color-primary)",
-            color: "var(--color-white)",
-            borderRadius: "16px",
-            "&:hover": {
-              backgroundColor: "var(--color-primary)",
+            mb: 3,
+            "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+              borderColor: "var(--color-black)",
+              borderRadius: "16px",
+            },
+            "& .MuiOutlinedInput-input": {
+              borderRadius: "16px",
+            },
+            "& .MuiInputLabel-outlined": {
+              color: "var(--color-black)",
             },
           }}
-          onClick={handleCancel}
-        >
-          Cancel
-        </Button>
-        <Button
-          variant="contained"
+        />
+        <FormControl
+          variant="outlined"
+          fullWidth
           sx={{
-            backgroundColor: "var(--color-primary)",
-            color: "var(--color-white)",
-            borderRadius: "16px",
-            "&:hover": {
-              backgroundColor: "var(--color-primary)",
+            mb: 3,
+            "& .MuiInputLabel-outlined": {
+              color: "var(--color-black)",
             },
           }}
-          onClick={handleCreateTeam}
         >
-          Create Team
-        </Button>
-      </Box>
-    </Paper>
+          <InputLabel id="select-sport-label">Select Sport</InputLabel>
+          <Select
+            labelId="select-sport-label"
+            label="Select Sport"
+            fullWidth
+            sx={{
+              "& .MuiInputLabel-outlined": {
+                color: "var(--color-black)",
+              },
+              "& .MuiSelect-select": {
+                borderRadius: "16px",
+              },
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderRadius: "16px",
+              },
+            }}
+          >
+            <MenuItem value="Football">Football</MenuItem>
+            <MenuItem value="Basketball">Basketball</MenuItem>
+            <MenuItem value="Soccer">Soccer</MenuItem>
+            <MenuItem value="Volleyball">Volleyball</MenuItem>
+            <MenuItem value="Tennis">Tennis</MenuItem>
+          </Select>
+        </FormControl>
+        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+          <Button
+            variant="contained"
+            sx={{
+              mr: 2,
+              backgroundColor: "var(--color-primary)",
+              color: "var(--color-white)",
+              borderRadius: "16px",
+              "&:hover": {
+                backgroundColor: "var(--color-secondary)",
+              },
+            }}
+          >
+            Create
+          </Button>
+          <Button
+            variant="outlined"
+            sx={{
+              borderColor: "var(--color-primary)",
+              color: "var(--color-primary)",
+              borderRadius: "16px",
+              "&:hover": {
+                backgroundColor: "var(--color-primary)",
+                color: "var(--color-white)",
+              },
+            }}
+          >
+            Cancel
+          </Button>
+        </Box>
+      </AccordionDetails>
+    </Accordion>
   );
 };
 
