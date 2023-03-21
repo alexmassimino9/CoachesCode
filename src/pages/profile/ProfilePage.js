@@ -3,6 +3,7 @@ import { AppBar, ProfileIcon } from "../../components";
 import UserContext, { UserProvider } from "../../context/UserContext";
 import { ProfileCarousel } from "./profilePageComponents";
 import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
 const ProfilePage = () => {
   // Get user context and user details state
@@ -11,37 +12,54 @@ const ProfilePage = () => {
 
   // Set user details on mount or when user context changes
   useEffect(() => {
-    setUserDetails(user?.user || {});
+    if (user !== null && user !== undefined) {
+      setUserDetails(user?.user);
+    }
   }, [user]);
 
+  console.log("userDetails", userDetails);
   // Set default avatar image from username
-  const defaultAvatarImg = userDetails?.username?.charAt(0).toUpperCase();
 
   return (
-    <UserProvider>
-      <main className="main">
-        <AppBar />
-        <section className="profileContainer">
-          <aside className="profileAside">
-            {/* Display user details */}
-            <ProfileIcon img={defaultAvatarImg} />
-            <h1>{userDetails?.username}</h1>
-            <h2>{userDetails?.attributes?.email}</h2>
-            <h3>Team Name</h3>
-            <h4>Coach / F / MF / DF / GF</h4>
+    <>
+      {userDetails && (
+        <UserProvider>
+          <main className="main">
+            <AppBar />
+            <section className="profileContainer">
+              <aside className="profileAside">
+                {/* Display user details */}
+                <ProfileIcon
+                  img={userDetails?.username?.charAt(0).toUpperCase()}
+                />
+                <Typography variant="h4" component="h2">
+                  {userDetails?.username}
+                </Typography>
+                <Typography variant="h6" component="h3">
+                  {userDetails?.attributes?.email}
+                </Typography>
+                <Typography variant="h6" component="h3">
+                  Team Name
+                </Typography>
 
-            {/* Add edit profile button */}
-            <Button variant="contained" color="primary">
-              Edit Profile
-            </Button>
-          </aside>
-          <div className="profileContentContainer">
-            {/* Display profile carousel */}
-            <ProfileCarousel />
-          </div>
-        </section>
-      </main>
-    </UserProvider>
+                {/* Add edit profile button */}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{ marginTop: "15px" }}
+                >
+                  Edit Profile
+                </Button>
+              </aside>
+              <div className="profileContentContainer">
+                {/* Display profile carousel */}
+                <ProfileCarousel />
+              </div>
+            </section>
+          </main>
+        </UserProvider>
+      )}
+    </>
   );
 };
 

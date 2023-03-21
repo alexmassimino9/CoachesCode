@@ -13,11 +13,7 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-const teams = [
-  { id: 1, name: "Team A", region: "na" },
-  { id: 2, name: "Team B", region: "eu" },
-  { id: 3, name: "Team C", region: "ap" },
-];
+const teams = [];
 
 const JoinATeam = () => {
   const [expanded, setExpanded] = useState(false);

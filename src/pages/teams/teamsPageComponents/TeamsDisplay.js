@@ -41,9 +41,9 @@ const TeamsDisplay = () => {
   };
 
   return (
-    <Box className={classes.root}>
+    <Grid item xs={12}>
       <Typography variant="h2" gutterBottom>
-        Teams in the database
+        Explore Teams
       </Typography>
       <Grid container spacing={2}>
         {teams.map((team) => (
@@ -65,7 +65,7 @@ const TeamsDisplay = () => {
           </Grid>
         ))}
       </Grid>
-    </Box>
+    </Grid>
   );
 };
 

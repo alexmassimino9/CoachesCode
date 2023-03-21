@@ -15,14 +15,21 @@ import { Team } from "../../models";
 const TeamsPage = () => {
   const [teams, setTeams] = useState([]);
 
+  const fetchTeams = async () => {
+    // make this a try catch block
+    try {
+      const data = await DataStore.query(Team);
+      if (data !== null || data !== undefined) {
+        setTeams(data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     fetchTeams();
   }, []);
-
-  const fetchTeams = async () => {
-    const teams = await DataStore.query(Team);
-    setTeams(teams);
-  };
 
   return (
     <>
@@ -33,13 +40,13 @@ const TeamsPage = () => {
         </Typography>
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
-            <CreateATeam />
+            <CreateATeam teams={teams} />
           </Grid>
           <Grid item xs={12} md={6}>
-            <FindATeam />
+            <FindATeam teams={teams} />
           </Grid>
           <Grid item xs={12}>
-            <JoinATeam />
+            <JoinATeam teams={teams} />
           </Grid>
           <TeamsDisplay teams={teams} />
         </Grid>

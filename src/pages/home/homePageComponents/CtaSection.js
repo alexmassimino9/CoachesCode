@@ -1,6 +1,7 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
 import { Box, Button, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const CtaSectionRoot = styled("section")(({ theme }) => ({
   backgroundColor: "var(--color-secondary)",
@@ -25,13 +26,19 @@ const CtaButton = styled(Button)(({ theme }) => ({
 }));
 
 const CtaSection = () => {
+  const navigate = useNavigate();
+
   return (
     <CtaSectionRoot>
       <Typography variant="h2" align="center">
         Create teams, manage players, and stay organized.
       </Typography>
       <Box marginTop={4}>
-        <CtaButton variant="contained" size="large">
+        <CtaButton
+          variant="contained"
+          size="large"
+          onClick={() => navigate("/teams")}
+        >
           Get Started
         </CtaButton>
       </Box>

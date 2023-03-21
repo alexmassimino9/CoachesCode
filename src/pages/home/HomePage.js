@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import UserContext from "../../context/UserContext";
+import React from "react";
 import {
   TestimonialSection,
   FeatureSection,
@@ -8,8 +7,6 @@ import {
 } from "./homePageComponents";
 
 const HomePage = () => {
-  const { user, setUser } = useContext(UserContext);
-
   return (
     <main className="">
       <HeroSection />

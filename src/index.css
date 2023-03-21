@@ -39,13 +39,16 @@ colors
     }
     .profileContainer {
     flex-direction: column !important;  
+    margin-bottom: 2rem !important;
 
     }
   
     .profileAside {
-        border-radius: 16px 16px 0 0 !important;;  
+        padding: 2rem !important;
+        border-radius: 16px 16px 0 0 !important;
     }
     .profileContentContainer {
+
     }
   }
 
