@@ -14,7 +14,8 @@ type EagerUser = {
   readonly id: string;
   readonly username: string;
   readonly email: string;
-  readonly firstName?: string | null;
+  readonly firstName: string;
+  readonly lastName: string;
   readonly teams?: (Team | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
@@ -28,7 +29,8 @@ type LazyUser = {
   readonly id: string;
   readonly username: string;
   readonly email: string;
-  readonly firstName?: string | null;
+  readonly firstName: string;
+  readonly lastName: string;
   readonly teams: AsyncCollection<Team>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
