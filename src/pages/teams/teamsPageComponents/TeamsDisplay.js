@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { DataStore } from "@aws-amplify/datastore";
 import { Team } from "../../../models";
-import { Grid, Typography, Card, CardContent, Box } from "@mui/material";
+import {
+  Grid,
+  Typography,
+  Card,
+  CardContent,
+  Box,
+  Button,
+} from "@mui/material";
 import styled from "@emotion/styled";
 
 const useStyles = styled((theme) => ({
@@ -39,7 +46,10 @@ const TeamsDisplay = () => {
     const teams = await DataStore.query(Team);
     setTeams(teams);
   };
-
+  const deleteTeam = async (id) => {
+    await DataStore.delete(Team, id);
+    fetchTeams();
+  };
   return (
     <Grid item xs={12}>
       <Typography variant="h2" gutterBottom>
@@ -49,6 +59,15 @@ const TeamsDisplay = () => {
         {teams.map((team) => (
           <Grid key={team.id} item xs={12} md={4}>
             <Card className={classes.card}>
+              <Button
+                onClick={() => deleteTeam(team.id)}
+                variant="contained"
+                color="secondary"
+                size="small"
+                className={classes.deleteButton}
+              >
+                X
+              </Button>
               <CardContent>
                 <Typography
                   variant="h5"
