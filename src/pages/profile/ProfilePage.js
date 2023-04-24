@@ -1,19 +1,19 @@
 import React, { useEffect, useState, useContext } from "react";
 import { AppBar, ProfileIcon } from "../../components";
-import UserContext from "../../context/UserContext";
+import { UserContext } from "../../context/UserContext";
 import { ProfileCarousel } from "./profilePageComponents";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 const ProfilePage = () => {
   // Get user context and user details state
-  const user = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [userDetails, setUserDetails] = useState({});
 
   // Set user details on mount or when user context changes
   useEffect(() => {
     if (user !== null && user !== undefined) {
-      setUserDetails(user?.user);
+      setUserDetails(user);
     }
   }, [user]);
 
