@@ -7,7 +7,7 @@ import { FEATURES } from "../../../constants/arrays";
 
 const FeatureSectionRoot = styled("section")(({ theme }) => ({
   backgroundColor: "#FCE5CD",
-  padding: theme.spacing(4, 2),
+  padding: theme.spacing(6),
 }));
 
 const FeatureItem = styled(Box)(({ theme }) => ({
@@ -18,12 +18,18 @@ const FeatureItem = styled(Box)(({ theme }) => ({
   backgroundColor: "#fff",
   color: "#333",
   borderRadius: "10px",
-  padding: theme.spacing(2, 1),
+  padding: theme.spacing(3),
   boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.1)",
   transition: "all 0.3s ease-in-out",
-  margin: theme.spacing(1, 1),
-  minWidth: "150px",
-  minHeight: "250px",
+  margin: theme.spacing(2),
+  minWidth: "200px",
+  minHeight: "325px",
+  [theme.breakpoints.down("sm")]: {
+    padding: theme.spacing(5),
+    margin: `${theme.spacing(2)} ${theme.spacing(1)}`,
+    minWidth: "150px",
+    minHeight: "250px",
+  },
 }));
 
 const FeatureIcon = styled(Box)(({ theme }) => ({

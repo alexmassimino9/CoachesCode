@@ -3,6 +3,7 @@ import AppBar from "./components/AppBar";
 import { HomePage } from "./pages";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import theme from "./context/ThemeContext";
+import "./index.css";
 
 const App = () => {
   return (

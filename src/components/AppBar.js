@@ -1,21 +1,33 @@
 import React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import { SideMenu, SignOutButton } from "./";
+import { AppBar, Box, Toolbar, IconButton } from "@mui/material";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { SideMenu } from "./";
+import { styled } from "@mui/material/styles";
+
+const ModernAppBar = styled(AppBar)(({ theme }) => ({
+  color: "#fff",
+  boxShadow: "none",
+  fontFamily: "Roboto",
+  backgroundColor: "#1E3559",
+}));
+
+const ModernIconButton = styled(IconButton)(({ theme }) => ({
+  color: "#fff",
+}));
 
 const ButtonAppBar = ({ signOut }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar
-        position="static"
-        sx={{ backgroundColor: "var(--color-secondary)" }}
-      >
+      <ModernAppBar position="static">
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <SideMenu />
-          <SignOutButton signOut={signOut} sx={{ marginLeft: "auto" }} />
+          <Box sx={{ display: "flex" }}>
+            <ModernIconButton onClick={signOut} aria-label="sign out">
+              <LogoutIcon />
+            </ModernIconButton>
+          </Box>
         </Toolbar>
-      </AppBar>
+      </ModernAppBar>
     </Box>
   );
 };
