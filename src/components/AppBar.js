@@ -21,4 +21,4 @@ const ButtonAppBar = ({ signOut }) => {
   );
 };
 
-export default withAuthenticator(ButtonAppBar);
+export default ButtonAppBar;

@@ -22,41 +22,39 @@ const ProfilePage = () => {
 
   return (
     <>
-      {userDetails && (
-        <main className="main">
-          <AppBar />
-          <section className="profileContainer">
-            <aside className="profileAside">
-              {/* Display user details */}
-              <ProfileIcon
-                img={userDetails?.username?.charAt(0).toUpperCase()}
-              />
-              <Typography variant="h4" component="h2">
-                {userDetails?.username}
-              </Typography>
-              <Typography variant="h6" component="h3">
-                {userDetails?.attributes?.email}
-              </Typography>
-              <Typography variant="h6" component="h3">
-                Team Name
-              </Typography>
+      {/* {userDetails && ( */}
+      <main className="main">
+        <AppBar />
+        <section className="profileContainer">
+          <aside className="profileAside">
+            {/* Display user details */}
+            <ProfileIcon img={userDetails?.username?.charAt(0).toUpperCase()} />
+            <Typography variant="h4" component="h2">
+              {userDetails?.username}
+            </Typography>
+            <Typography variant="h6" component="h3">
+              {userDetails?.attributes?.email}
+            </Typography>
+            <Typography variant="h6" component="h3">
+              Team Name
+            </Typography>
 
-              {/* Add edit profile button */}
-              <Button
-                variant="contained"
-                color="primary"
-                sx={{ marginTop: "15px" }}
-              >
-                Edit Profile
-              </Button>
-            </aside>
-            <div className="profileContentContainer">
-              {/* Display profile carousel */}
-              <ProfileCarousel />
-            </div>
-          </section>
-        </main>
-      )}
+            {/* Add edit profile button */}
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{ marginTop: "15px" }}
+            >
+              Edit Profile
+            </Button>
+          </aside>
+          <div className="profileContentContainer">
+            {/* Display profile carousel */}
+            <ProfileCarousel />
+          </div>
+        </section>
+      </main>
+      {/* )} */}
     </>
   );
 };
