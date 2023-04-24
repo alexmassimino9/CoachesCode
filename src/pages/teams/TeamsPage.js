@@ -9,22 +9,12 @@ import {
   JoinATeam,
   TeamsDisplay,
 } from "./teamsPageComponents";
-import { DataStore } from "@aws-amplify/datastore";
-import { Team } from "../../models";
 
 const TeamsPage = () => {
   const [teams, setTeams] = useState([]);
 
   const fetchTeams = async () => {
     // make this a try catch block
-    try {
-      const data = await DataStore.query(Team);
-      if (data !== null || data !== undefined) {
-        setTeams(data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   useEffect(() => {

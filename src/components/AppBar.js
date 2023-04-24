@@ -3,7 +3,6 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import { SideMenu, SignOutButton } from "./";
-import { withAuthenticator } from "@aws-amplify/ui-react";
 
 const ButtonAppBar = ({ signOut }) => {
   return (
@@ -21,4 +20,4 @@ const ButtonAppBar = ({ signOut }) => {
   );
 };
 
-export default withAuthenticator(ButtonAppBar);
+export default ButtonAppBar;

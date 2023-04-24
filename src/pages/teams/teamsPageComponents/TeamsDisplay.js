@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { DataStore } from "@aws-amplify/datastore";
-import { Team } from "../../../models";
 import {
   Grid,
   Typography,
@@ -43,11 +41,9 @@ const TeamsDisplay = () => {
   }, []);
 
   const fetchTeams = async () => {
-    const teams = await DataStore.query(Team);
     setTeams(teams);
   };
   const deleteTeam = async (id) => {
-    await DataStore.delete(Team, id);
     fetchTeams();
   };
   return (
