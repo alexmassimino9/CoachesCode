@@ -11,7 +11,6 @@ export const createUser = /* GraphQL */ `
       username
       email
       firstName
-      lastName
       teams {
         items {
           id
@@ -45,7 +44,6 @@ export const updateUser = /* GraphQL */ `
       username
       email
       firstName
-      lastName
       teams {
         items {
           id
@@ -79,7 +77,6 @@ export const deleteUser = /* GraphQL */ `
       username
       email
       firstName
-      lastName
       teams {
         items {
           id
@@ -117,7 +114,6 @@ export const createTeam = /* GraphQL */ `
         username
         email
         firstName
-        lastName
         teams {
           nextToken
           startedAt
@@ -166,7 +162,6 @@ export const updateTeam = /* GraphQL */ `
         username
         email
         firstName
-        lastName
         teams {
           nextToken
           startedAt
@@ -215,7 +210,6 @@ export const deleteTeam = /* GraphQL */ `
         username
         email
         firstName
-        lastName
         teams {
           nextToken
           startedAt
@@ -268,7 +262,6 @@ export const createPlayer = /* GraphQL */ `
           username
           email
           firstName
-          lastName
           createdAt
           updatedAt
           _version
@@ -313,7 +306,6 @@ export const updatePlayer = /* GraphQL */ `
           username
           email
           firstName
-          lastName
           createdAt
           updatedAt
           _version
@@ -358,7 +350,6 @@ export const deletePlayer = /* GraphQL */ `
           username
           email
           firstName
-          lastName
           createdAt
           updatedAt
           _version

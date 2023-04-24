@@ -8,7 +8,6 @@ export const getUser = /* GraphQL */ `
       username
       email
       firstName
-      lastName
       teams {
         items {
           id
@@ -44,7 +43,6 @@ export const listUsers = /* GraphQL */ `
         username
         email
         firstName
-        lastName
         teams {
           nextToken
           startedAt
@@ -78,7 +76,6 @@ export const syncUsers = /* GraphQL */ `
         username
         email
         firstName
-        lastName
         teams {
           nextToken
           startedAt
@@ -105,7 +102,6 @@ export const getTeam = /* GraphQL */ `
         username
         email
         firstName
-        lastName
         teams {
           nextToken
           startedAt
@@ -156,7 +152,6 @@ export const listTeams = /* GraphQL */ `
           username
           email
           firstName
-          lastName
           createdAt
           updatedAt
           _version
@@ -201,7 +196,6 @@ export const syncTeams = /* GraphQL */ `
           username
           email
           firstName
-          lastName
           createdAt
           updatedAt
           _version
@@ -239,7 +233,6 @@ export const getPlayer = /* GraphQL */ `
           username
           email
           firstName
-          lastName
           createdAt
           updatedAt
           _version

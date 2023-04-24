@@ -6,8 +6,7 @@ type User @model {
   id: ID!
   username: String!
   email: String!
-  firstName: String!
-  lastName: String!
+  firstName: String
   teams: [Team] @hasMany
 }
 
