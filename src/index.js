@@ -9,7 +9,6 @@ import {
   Route,
 } from "react-router-dom";
 import "./index.css";
-import { UserProvider } from "./context/UserContext";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,10 +24,8 @@ const router = createBrowserRouter(
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <UserProvider>
-      <RouterProvider router={router}>
-        <App />
-      </RouterProvider>
-    </UserProvider>
+    <RouterProvider router={router}>
+      <App />
+    </RouterProvider>
   </React.StrictMode>
 );
