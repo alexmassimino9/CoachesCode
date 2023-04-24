@@ -1,61 +1,60 @@
 import React from "react";
 import { Typography, Box, Container } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { TESTIOMNIALS } from "../../../constants/arrays";
 
 const TestimonialSectionRoot = styled("section")(({ theme }) => ({
-  backgroundColor: "var(--color-gold)",
-  padding: theme.spacing(8, 0),
+  backgroundColor: "#F4F4F4",
+  padding: theme.spacing(10, 0),
 }));
 
 const TestimonialTitle = styled(Typography)(({ theme }) => ({
-  color: "#fff",
+  color: "#333",
   fontWeight: 700,
   marginBottom: theme.spacing(4),
+  textTransform: "uppercase",
+  letterSpacing: "0.2rem",
+  borderBottom: "3px solid #E07A5F",
+  paddingBottom: theme.spacing(1),
 }));
 
 const TestimonialBox = styled(Box)(({ theme }) => ({
   backgroundColor: "#fff",
-  borderRadius: "8px",
+  borderRadius: "12px",
   padding: theme.spacing(4),
-  boxShadow: "0 2px 4px rgba(0, 0, 0, 0.15)",
+  boxShadow: "0 10px 20px rgba(0, 0, 0, 0.1)",
+  marginBottom: theme.spacing(4),
 }));
 
 const TestimonialQuote = styled(Typography)(({ theme }) => ({
-  color: "var(--color-gold)",
+  color: "#555",
   fontSize: "1.5rem",
-  fontStyle: "italic",
+  fontWeight: 400,
+  lineHeight: "2rem",
   marginBottom: theme.spacing(2),
 }));
 
 const TestimonialCite = styled(Typography)(({ theme }) => ({
   fontWeight: 700,
-  color: "var(--color-secondary)",
+  color: "#E07A5F",
+  marginTop: theme.spacing(2),
 }));
 
 const TestimonialSection = () => {
   return (
     <TestimonialSectionRoot>
-      <Container maxWidth="sm">
+      <Container maxWidth="md">
         <TestimonialTitle variant="h2" align="center">
           What Our Users Are Saying
         </TestimonialTitle>
-        <TestimonialBox>
-          <TestimonialQuote>
-            "I've been using Coach's Code for the past year and it's been a
-            game-changer for my team. The app has made managing my team's
-            schedule and communication so much more streamlined. I used to spend
-            hours trying to coordinate practices and games, but now it's all
-            done in a few clicks. I can't imagine going back to the old way."
-          </TestimonialQuote>
-          <TestimonialCite>- John D., Head Coach</TestimonialCite>
-        </TestimonialBox>
-        <TestimonialBox sx={{ marginTop: "2rem" }}>
-          <TestimonialQuote>
-            "The in-app chat feature is a game-changer. It makes it so easy to
-            communicate with my team."
-          </TestimonialQuote>
-          <TestimonialCite>- Sara M., Player</TestimonialCite>
-        </TestimonialBox>
+        {TESTIOMNIALS.map((item, index) => {
+          return (
+            <TestimonialBox key={index}>
+              <TestimonialQuote>{item.testimonial}</TestimonialQuote>
+              <TestimonialCite>- {item.cite}</TestimonialCite>
+            </TestimonialBox>
+          );
+        })}
       </Container>
     </TestimonialSectionRoot>
   );

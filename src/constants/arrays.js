@@ -39,3 +39,21 @@ export const FEATURES = [
       "Upload photos and videos to Coach's Code to share with your team. Keep memories alive and celebrate victories together!",
   },
 ];
+
+export const TESTIOMNIALS = [
+  {
+    id: 1,
+    testimonial: ` "I've been using Coach's Code for the past year and it's been a
+  game-changer for my team. The app has made managing my team's
+  schedule and communication so much more streamlined. I used to spend
+  hours trying to coordinate practices and games, but now it's all
+  done in a few clicks. I can't imagine going back to the old way."`,
+    cite: "John D., Head Coach",
+  },
+  {
+    id: 2,
+    testimonial: ` "The in-app chat feature is a game-changer. It makes it so easy to
+    communicate with my team."`,
+    cite: "Sara M., Player",
+  },
+];
