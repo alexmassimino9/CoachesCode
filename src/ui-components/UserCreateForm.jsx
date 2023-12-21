@@ -26,21 +26,25 @@ export default function UserCreateForm(props) {
     username: "",
     email: "",
     firstName: "",
+    lastName: "",
   };
   const [username, setUsername] = React.useState(initialValues.username);
   const [email, setEmail] = React.useState(initialValues.email);
   const [firstName, setFirstName] = React.useState(initialValues.firstName);
+  const [lastName, setLastName] = React.useState(initialValues.lastName);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setUsername(initialValues.username);
     setEmail(initialValues.email);
     setFirstName(initialValues.firstName);
+    setLastName(initialValues.lastName);
     setErrors({});
   };
   const validations = {
     username: [{ type: "Required" }],
     email: [{ type: "Required" }],
-    firstName: [],
+    firstName: [{ type: "Required" }],
+    lastName: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -71,6 +75,7 @@ export default function UserCreateForm(props) {
           username,
           email,
           firstName,
+          lastName,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -128,6 +133,7 @@ export default function UserCreateForm(props) {
               username: value,
               email,
               firstName,
+              lastName,
             };
             const result = onChange(modelFields);
             value = result?.username ?? value;
@@ -154,6 +160,7 @@ export default function UserCreateForm(props) {
               username,
               email: value,
               firstName,
+              lastName,
             };
             const result = onChange(modelFields);
             value = result?.email ?? value;
@@ -170,7 +177,7 @@ export default function UserCreateForm(props) {
       ></TextField>
       <TextField
         label="First name"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         value={firstName}
         onChange={(e) => {
@@ -180,6 +187,7 @@ export default function UserCreateForm(props) {
               username,
               email,
               firstName: value,
+              lastName,
             };
             const result = onChange(modelFields);
             value = result?.firstName ?? value;
@@ -193,6 +201,33 @@ export default function UserCreateForm(props) {
         errorMessage={errors.firstName?.errorMessage}
         hasError={errors.firstName?.hasError}
         {...getOverrideProps(overrides, "firstName")}
+      ></TextField>
+      <TextField
+        label="Last name"
+        isRequired={true}
+        isReadOnly={false}
+        value={lastName}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              username,
+              email,
+              firstName,
+              lastName: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.lastName ?? value;
+          }
+          if (errors.lastName?.hasError) {
+            runValidationTasks("lastName", value);
+          }
+          setLastName(value);
+        }}
+        onBlur={() => runValidationTasks("lastName", lastName)}
+        errorMessage={errors.lastName?.errorMessage}
+        hasError={errors.lastName?.hasError}
+        {...getOverrideProps(overrides, "lastName")}
       ></TextField>
       <Flex
         justifyContent="space-between"

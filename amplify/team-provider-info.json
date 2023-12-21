@@ -1,4 +1,25 @@
 {
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-coachescode-dev-112137-authRole",
+      "UnauthRoleArn": "arn:aws:iam::504964358927:role/amplify-coachescode-dev-112137-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::504964358927:role/amplify-coachescode-dev-112137-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-coachescode-dev-112137-deployment",
+      "UnauthRoleName": "amplify-coachescode-dev-112137-unauthRole",
+      "StackName": "amplify-coachescode-dev-112137",
+      "StackId": "arn:aws:cloudformation:us-east-1:504964358927:stack/amplify-coachescode-dev-112137/b5cd2fe0-e2b3-11ed-915a-0a5a994082af",
+      "AmplifyAppId": "d33yhbkckayihs"
+    },
+    "categories": {
+      "auth": {
+        "coachescode863e8e79": {}
+      },
+      "api": {
+        "coachescode": {}
+      }
+    }
+  },
   "main": {
     "awscloudformation": {
       "AuthRoleName": "amplify-coachescode-main-145022-authRole",
@@ -31,27 +52,6 @@
       "StackName": "amplify-amplifydbb65cbd8f974-staging-41644",
       "StackId": "arn:aws:cloudformation:us-east-2:504964358927:stack/amplify-amplifydbb65cbd8f974-staging-41644/0934b110-bd68-11ed-9f90-02c64b738120",
       "AmplifyAppId": "d20njt9dmt5i9j"
-    },
-    "categories": {
-      "auth": {
-        "coachescode863e8e79": {}
-      },
-      "api": {
-        "coachescode": {}
-      }
-    }
-  },
-  "dev": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-coachescode-dev-112137-authRole",
-      "UnauthRoleArn": "arn:aws:iam::504964358927:role/amplify-coachescode-dev-112137-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::504964358927:role/amplify-coachescode-dev-112137-authRole",
-      "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-coachescode-dev-112137-deployment",
-      "UnauthRoleName": "amplify-coachescode-dev-112137-unauthRole",
-      "StackName": "amplify-coachescode-dev-112137",
-      "StackId": "arn:aws:cloudformation:us-east-1:504964358927:stack/amplify-coachescode-dev-112137/b5cd2fe0-e2b3-11ed-915a-0a5a994082af",
-      "AmplifyAppId": "d33yhbkckayihs"
     },
     "categories": {
       "auth": {
